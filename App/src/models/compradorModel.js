@@ -1,0 +1,45 @@
+const mongoose = require('mongoose');
+
+const compradorOferenteSchema = new mongoose.Schema({
+  nit: {
+    type: String,
+    required: true,
+  },
+  nombre: {
+    type: String,
+    required: true,
+  },
+  direccion: String,
+  telefono: String,
+  ciudad: String,
+  departamento: String,
+  ubicacion: {
+    type: {
+      type: String,
+      default: 'Point',
+    },
+    coordinates: {
+      type: [Number],
+      default: [0, 0],
+    },
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  rol: {
+    type: String,
+    default: 'comprador',
+  },
+});
+
+compradorOferenteSchema.index({ ubicacion: '2dsphere' });
+
+const CompradorOferente = mongoose.model('CompradorOferente', compradorOferenteSchema);
+
+module.exports = CompradorOferente;

@@ -4,21 +4,24 @@ const {Router}= require('express');
 //const {loginRouter} = require('./loginRoutes')
 const {  clienteNewPassword, clienteIdRouter, clienteRouter, clienteMasivoRouter, updateClienteIdRouter} = require('./clienteRoutes')
 const roleRouter = require('./roleRoutes');
+const aseguradoraRouter = require('./aseguradoresRoutes')
+const compradorRouter = require('./compradorRoutes')
 const { userRouter } = require('./userRoutes');
-const statusRouter   = require('./statusRoutes')
-const orderRouter = require('./orderRoutes')
-const tasksRouter = require('./taskRoutes')
-
+const productorRouter = require('./productorRoutes')
+const transportadorRouter = require('./transportadoresRoute')
+const productoRouter = require('./productosRoutes')
+const categoriaRouter = require('./categoriaRoutes')
 
 router = Router();  
 
-
-router.use('/task', tasksRouter);
-router.use('/order', orderRouter);
-router.use('/status', statusRouter);
+router.use('/categoria', categoriaRouter);
+router.use('/transportador', transportadorRouter);
+router.use('/producto', productoRouter);
+router.use('/productor', productorRouter);
+router.use('/comprador', compradorRouter);
+router.use('/aseguradora', aseguradoraRouter);
 router.use('/newPassword', clienteNewPassword);
 router.use('/updateCliente', updateClienteIdRouter);
-router.use('/clientMas', clienteMasivoRouter);
 router.use('/clientId', clienteIdRouter);
 router.use('/role', roleRouter);
 router.use('/client', clienteRouter);
