@@ -36,6 +36,10 @@ const compradorOferenteSchema = new mongoose.Schema({
     type: String,
     default: 'comprador',
   },
+  fechaCreacion: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 compradorOferenteSchema.index({ ubicacion: '2dsphere' });

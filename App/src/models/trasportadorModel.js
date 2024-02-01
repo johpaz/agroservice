@@ -36,6 +36,10 @@ const transportadorSchema = new mongoose.Schema({
       default: [0, 0],
     },
   },
+  fechaCreacion: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 transportadorSchema.index({ ubicacion: '2dsphere' });

@@ -34,7 +34,11 @@ const productorCampesinoSchema = new mongoose.Schema({
   },
   rol: {
     type: String,
-    default: 'productor', // Puedes definir roles como 'productor', 'comprador', etc.
+    default: 'productor', 
+  },
+  fechaCreacion: {
+    type: Date,
+    default: Date.now,
   },
 });
 

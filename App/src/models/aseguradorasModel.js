@@ -27,6 +27,10 @@ const aseguradoraSchema = new mongoose.Schema({
     type: String,
     default: 'asegurador',
   },
+  fechaCreacion: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Aseguradora = mongoose.model('Aseguradora', aseguradoraSchema);

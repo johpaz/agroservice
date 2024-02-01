@@ -11,9 +11,11 @@ const productorRouter = require('./productorRoutes')
 const transportadorRouter = require('./transportadoresRoute')
 const productoRouter = require('./productosRoutes')
 const categoriaRouter = require('./categoriaRoutes')
+const ofertasroutes = require('./publicacionRoutes')
 
 router = Router();  
 
+router.use('/publicacion', categoriaRouter);
 router.use('/categoria', categoriaRouter);
 router.use('/transportador', transportadorRouter);
 router.use('/producto', productoRouter);
