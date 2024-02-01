@@ -9,11 +9,9 @@ const createTransportador = async (
   telefono,
   ciudad,
   departamento,
-  mail,
-  ubicacion,
   email,
   password,
-  rol
+  ubicacion,
   
 ) => {
   try {
@@ -26,10 +24,7 @@ const createTransportador = async (
         message: 'El Transportador ya existe.'
       };
     }
-
-    
-
-    // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
+   // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
     const newTransportador = new Transportador({
       nit: nit,
       nombre:nombre,
@@ -37,10 +32,9 @@ const createTransportador = async (
       telefono:telefono,
       ciudad:ciudad,
       departamento:departamento,
-      ubicacion:ubicacion,
       email:email,
       password:password,
-      rol:rol
+      ubicacion:ubicacion,
     });
 
     await newTransportador.save();

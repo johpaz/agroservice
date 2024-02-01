@@ -26,13 +26,14 @@ const transportadorSchema = new mongoose.Schema({
   rol: {
     type: String,
     default: 'transportador',
-  },  ubicacion: {
+  }, 
+  ubicacion: {
     type: {
       type: String,
-      default: 'Point', 
+      default: 'Point', // Tipo de dato para coordenadas
     },
     coordinates: {
-      type: [Number], 
+      type: [Number], // [longitud, latitud]
       default: [0, 0],
     },
   },

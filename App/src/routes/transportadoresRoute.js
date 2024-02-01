@@ -1,6 +1,6 @@
 const {Router}= require('express');
 
-const {createTransportador} = require('../controllers/transportadores/transportadoresController');
+const {validateCreateTransportador,handleCreateTransportador} = require('../handler/transportadoraHandler');
 const {getAllTransportador} = require('../controllers/transportadores/getTransportadores')
 const {getTransportadorById} = require('../controllers/transportadores/getTransportadores')
 const {updateTransportador} = require('../controllers/transportadores/getTransportadores')
@@ -8,7 +8,7 @@ const {updateTransportador} = require('../controllers/transportadores/getTranspo
 const TransportadorRouter = Router();
 
 // Ruta para manejar la autenticación
-TransportadorRouter.post('/', createTransportador);
+TransportadorRouter.post('/', validateCreateTransportador,handleCreateTransportador);
 TransportadorRouter.get('/', getAllTransportador);
 TransportadorRouter.get('/:id', getTransportadorById);
 TransportadorRouter.put('/:id', updateTransportador);

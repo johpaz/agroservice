@@ -1,6 +1,6 @@
 const {Router}= require('express');
 
-const {validateCreateProfile,handleCreateClient} = require('../handler/clientHandler')
+
 const {getAllClientes } = require('../controllers/cliente/getProfiles'); 
 const getClientId = require('../handler/clientIdHandler')
 const {uploadHandlerClient,handleUploadClient}  = require('../handler/crearClienteMasivo')
@@ -19,7 +19,6 @@ const clienteNewPassword = Router();
 clienteNewPassword.put('/', actualizarContrasenaComoAdminHandler)
 clienteMasivoRouter.post('/', handleUploadClient,uploadHandlerClient)
 clienteRouter.get('/', getAllClientes)
-clienteRouter.post('/',validateCreateProfile, handleCreateClient)
 updateClienteIdRouter.put('/:id', updateCliente)
 clienteIdRouter.get('/:id', getClientId)
 

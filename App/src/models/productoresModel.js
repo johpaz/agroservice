@@ -45,6 +45,6 @@ const productorCampesinoSchema = new mongoose.Schema({
 // Indicar el tipo de índice para las coordenadas para permitir consultas geoespaciales
 productorCampesinoSchema.index({ ubicacion: '2dsphere' });
 
-const ProductorCampesino = mongoose.model('ProductorCampesino', productorCampesinoSchema);
+const Productor = mongoose.model('Productor', productorCampesinoSchema);
 
-module.exports = ProductorCampesino;
+module.exports = Productor;
