@@ -36,6 +36,10 @@ const compradorOferenteSchema = new mongoose.Schema({
     type: String,
     default: 'comprador',
   },
+  rating: {
+    type: String,
+    default: '5', 
+  },
   fechaCreacion: {
     type: Date,
     default: Date.now,

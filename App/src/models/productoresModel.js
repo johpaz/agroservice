@@ -32,6 +32,10 @@ const productorCampesinoSchema = new mongoose.Schema({
     type: String,
     default: 'productor', 
   },
+  rating: {
+    type: String,
+    default: '5', 
+  },
   fechaCreacion: {
     type: Date,
     default: Date.now,

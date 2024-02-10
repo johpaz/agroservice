@@ -27,6 +27,10 @@ const aseguradoraSchema = new mongoose.Schema({
     type: String,
     default: 'asegurador',
   },
+  rating: {
+    type: String,
+    default: '5', 
+  },
   fechaCreacion: {
     type: Date,
     default: Date.now,
