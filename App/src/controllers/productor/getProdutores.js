@@ -8,7 +8,7 @@ const getAllProductor = async (req, res) => {
       // Obtiene todos los perfiles independientemente del tipo
       const productor = await Productor.find();
   
-      return res.status(200).json(productor );
+      return res.status(200).json({productor} );
     } catch (error) {
       console.error('Error al obtener los Productores:', error);
       return res.status(500).json({ success: false, message: 'Error al obtener los Productores.' });
@@ -17,7 +17,7 @@ const getAllProductor = async (req, res) => {
 
   const getProductorById = async (req, res) => {
     const { id } = req.params;
-    
+      
     try {
     const productor = await Productor.findById(id);
     if(!productor){
