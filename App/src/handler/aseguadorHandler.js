@@ -29,6 +29,7 @@ const handleCreateAsegurador = async (req, res) => {
   const {
     nit,
     nombre,
+    imagen,
     direccion,
     telefono,
     ciudad,
@@ -42,6 +43,7 @@ const handleCreateAsegurador = async (req, res) => {
     const result = await createAseguradora(
       nit,
       nombre,
+      imagen,
       direccion,
       telefono,
       ciudad,

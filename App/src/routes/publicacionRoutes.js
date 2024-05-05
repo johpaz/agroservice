@@ -2,7 +2,7 @@
 
 const {Router}= require('express');
 
-const {enviarOfertaAseguradora,enviarOfertaComprador,enviarOfertaTransportador} = require('../controllers/publicacion/publicacionController');
+const {crearPublicacion,enviarOfertaAseguradora,enviarOfertaComprador,enviarOfertaTransportador} = require('../controllers/publicacion/publicacionController');
 const {getAllPublicacion,updatePublicacion,getPublicacionById} = require('../controllers/publicacion/getPublicacion')
 
 const ofertasRoutes = Router();
@@ -10,6 +10,7 @@ const ofertasRoutes = Router();
 ofertasRoutes.get('/', getAllPublicacion);
 ofertasRoutes.get('/', getPublicacionById);
 ofertasRoutes.put('/:id', updatePublicacion);
+ofertasRoutes.post('/', crearPublicacion);
 ofertasRoutes.post('/:id/ofertas/compradores', enviarOfertaComprador);
 ofertasRoutes.post('/:id/oferta/transportador', enviarOfertaTransportador);
 ofertasRoutes.post('/:id/oferta/aseguradora', enviarOfertaAseguradora);

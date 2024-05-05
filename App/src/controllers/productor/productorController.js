@@ -5,6 +5,7 @@ const Productor = require('../../models/productoresModel');
 const createProductor = async (
   nit,
   nombre,
+  imagen,
   direccion,
   telefono,
   ciudad,
@@ -29,6 +30,7 @@ const createProductor = async (
     const newProductor = new Productor({
       nit: nit,
       nombre: nombre,
+      imagen:imagen,
       direccion: direccion,
       telefono: telefono,
       ciudad: ciudad,

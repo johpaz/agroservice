@@ -5,6 +5,7 @@ const Aseguradoras = require('../../models/aseguradorasModel');
 const createAseguradora = async (
   nit,
   nombre,
+  imagen,
   direccion,
   telefono,
   ciudad,
@@ -31,6 +32,7 @@ const createAseguradora = async (
     const newAseguradora = new Aseguradoras({
       nit: nit,
       nombre:nombre,
+      imagen:imagen,
       direccion:direccion,
       telefono:telefono,
       ciudad:ciudad,

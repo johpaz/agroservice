@@ -29,6 +29,7 @@ const handleCreateProductor = async (req, res) => {
   const {
     nit,
     nombre,
+    imagen,
     direccion,
     telefono,
     ciudad,
@@ -43,6 +44,7 @@ const handleCreateProductor = async (req, res) => {
     const result = await createProductor(
       nit,
       nombre,
+      imagen,
       direccion,
       telefono,
       ciudad,

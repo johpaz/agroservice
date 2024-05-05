@@ -5,6 +5,7 @@ const Comprador = require('../../models/compradorModel');
 const createComprador = async (
   nit,
   nombre,
+  imagen,
   direccion,
   telefono,
   ciudad,
@@ -32,6 +33,7 @@ const createComprador = async (
     const newComprador = new Comprador({
       nit: nit,
       nombre:nombre,
+      imagen:imagen,
       direccion:direccion,
       telefono:telefono,
       ciudad:ciudad,

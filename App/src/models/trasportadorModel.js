@@ -10,6 +10,7 @@ const transportadorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imagen: String,
   telefono: String,
   direccion: String,
   ciudad: String,

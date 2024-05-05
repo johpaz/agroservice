@@ -9,6 +9,7 @@ const compradorOferenteSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imagen: String,
   direccion: String,
   telefono: String,
   ciudad: String,

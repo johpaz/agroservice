@@ -16,9 +16,11 @@ const fincaSchema = new mongoose.Schema({
       default: [0, 0],
     },
   },
-  agricultor: {
+  ciudad: String,
+  departamento: String,
+  productor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'ProductorCampesino',
+    ref: 'Productor',
     required: true,
   },
 });

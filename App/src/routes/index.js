@@ -8,6 +8,7 @@ const compradorRouter = require('./compradorRoutes')
 const productorRouter = require('./productorRoutes')
 const transportadorRouter = require('./transportadoresRoute')
 const productoRouter = require('./productosRoutes')
+const fincaRouter = require('./fincasRoutes')
 const categoriaRouter = require('./categoriaRoutes')
 const ofertasroutes = require('./publicacionRoutes')
 
@@ -15,6 +16,7 @@ const ofertasroutes = require('./publicacionRoutes')
 router = Router();  
 
 
+router.use('/finca', fincaRouter);
 router.use('/publicacion', ofertasroutes);
 router.use('/categoria', categoriaRouter);
 router.use('/transportador', transportadorRouter);
