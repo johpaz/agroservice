@@ -15,7 +15,7 @@ const publicacionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  fechaCosecha: {
+  fechaDispobibilidad: {
     type: Date,
     required: true,
   },
@@ -28,12 +28,7 @@ const publicacionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  fincas: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Finca',
-    },
-  ],  
+  
   ofertasCompradores: [
     {
       comprador: {

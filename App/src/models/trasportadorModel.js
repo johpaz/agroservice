@@ -37,6 +37,7 @@ const transportadorSchema = new mongoose.Schema({
       default: [0, 0],
     },
   },
+  imagen:String,
   rating: {
     type: String,
     default: '5', 

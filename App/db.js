@@ -21,7 +21,7 @@ function connectDB() {
   });
 
   connection.once('open', () => {
-    console.log('Connected to MongoDBAgroinsumos');
+    console.log('Connected to MongoDBAgroIntegrate');
   });
 
   return connection;

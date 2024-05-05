@@ -8,7 +8,7 @@ const productoSchema = new mongoose.Schema({
   },
   descripcion: String,
   cantidad:String,
-  
+  imagen:String,
   categorias: [
     {
       type: mongoose.Schema.Types.ObjectId,

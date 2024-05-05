@@ -11,6 +11,7 @@ const productorCampesinoSchema = new mongoose.Schema({
   },
   direccion: String,
   telefono: String,
+  imagen:String,
   ciudad:String,
   departamento:String,
   ubicacion: {

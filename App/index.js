@@ -4,7 +4,6 @@ const session = require('express-session');
 const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./db');
-const passportConfig = require('./passport-config'); 
 const index = require('./src/routes/index');
 const multer = require('multer');
 const bodyParser = require("body-parser");
@@ -39,8 +38,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // Configuración de Passport y Google Authentication
-app.use(passportConfig.initialize());
-app.use(passportConfig.session());
+
 
 //Mildelware
 

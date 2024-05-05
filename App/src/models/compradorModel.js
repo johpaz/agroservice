@@ -36,6 +36,7 @@ const compradorOferenteSchema = new mongoose.Schema({
     type: String,
     default: 'comprador',
   },
+  imagen:String,
   rating: {
     type: String,
     default: '5', 

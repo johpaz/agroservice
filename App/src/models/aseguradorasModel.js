@@ -19,6 +19,7 @@ const aseguradoraSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  imagen:String,
   password: {
     type: String,
     required: true,

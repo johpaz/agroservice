@@ -5,6 +5,7 @@ const fincaSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imagen:String,
   ubicacion: {
     type: {
       type: String,

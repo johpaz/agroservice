@@ -1,6 +1,6 @@
 const validateLoginData = (req, res, next) => {
     const { email, password } = req.body;
-    console.log(email,password);
+    
   
     // Verifica que se proporcionen email y password en el cuerpo de la solicitud
     if (!email || !password) {
