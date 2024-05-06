@@ -14,16 +14,19 @@ const validateCreateComprador = [
   body('password')
     .notEmpty().withMessage('El campo contraseña es obligatorio.')
     .isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres.'),
+    body('role').notEmpty().withMessage('El campo role es obligatorio.')
 ];
 
 
-const handleCreateComprador = async (req, res) => {
+const handleCreateComprador = async (data) => {
+  // console.log('data en handler ocmprdor', data)
+  
   // Manejar errores de validación utilizando el middleware handleValidationErrors
-  const errors = validationResult(req);
+  // const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  // if (!errors.isEmpty()) {
+  //   return res.status(400).json({ errors: errors.array() });
+  // }
 
   // Extraer datos del cuerpo de la solicitud
   const {
@@ -37,7 +40,8 @@ const handleCreateComprador = async (req, res) => {
     ubicacion,
     email,
     password,
-  } = req.body;
+    role
+  } = data;
 
   try {
     // Llamar a tu función para crear el perfil del Comprador
@@ -52,14 +56,16 @@ const handleCreateComprador = async (req, res) => {
       ubicacion,
       email,
       password,
+      role
     );
 
     // Devolver una respuesta exitosa
-    return res.status(200).json(result);
+    if(result) return result
+    // return res.status(200).json(result);
   } catch (error) {
     console.error('Error al crear el perfil:', error);
     // Devolver una respuesta de error en caso de problemas al crear el perfil
-    return res.status(500).json({ message: 'Error al crear el perfil.' });
+    return { error };
   }
 };
 

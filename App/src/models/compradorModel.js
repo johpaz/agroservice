@@ -33,10 +33,7 @@ const compradorOferenteSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  rol: {
-    type: String,
-    default: 'comprador',
-  },
+  role:{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true },
   imagen:String,
   rating: {
     type: String,

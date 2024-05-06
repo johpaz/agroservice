@@ -13,6 +13,7 @@ const createProductor = async (
   ubicacion,
   email,
   password,
+  role
   
   
 ) => {
@@ -38,6 +39,7 @@ const createProductor = async (
       ubicacion: ubicacion,
       email: email,
       password: password,
+      role: role
     });
     console.log(newProductor);
     await newProductor.save();

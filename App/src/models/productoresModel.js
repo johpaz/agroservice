@@ -29,10 +29,7 @@ const productorCampesinoSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  rol: {
-    type: String,
-    default: 'productor', 
-  },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true },
   rating: {
     type: String,
     default: '5', 

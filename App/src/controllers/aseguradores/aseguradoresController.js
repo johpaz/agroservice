@@ -12,7 +12,7 @@ const createAseguradora = async (
   departamento,
   email,
   password,
-  rol
+  role
   
 ) => {
   try {
@@ -39,7 +39,7 @@ const createAseguradora = async (
       departamento:departamento,
       email:email,
       password:password,
-      rol:rol
+      role:role
     });
 
     await newAseguradora.save();

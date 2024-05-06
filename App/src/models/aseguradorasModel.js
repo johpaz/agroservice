@@ -25,10 +25,7 @@ const aseguradoraSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  rol: {
-    type: String,
-    default: 'asegurador',
-  },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true },
   rating: {
     type: String,
     default: '5', 

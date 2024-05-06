@@ -24,10 +24,7 @@ const transportadorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  rol: {
-    type: String,
-    default: 'transportador',
-  }, 
+  role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true }, 
   ubicacion: {
     type: {
       type: String,

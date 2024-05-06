@@ -17,13 +17,13 @@ const validateCreateAsegurador = [
 ];
 
 
-const handleCreateAsegurador = async (req, res) => {
+const handleCreateAsegurador = async (data) => {
   // Manejar errores de validación utilizando el middleware handleValidationErrors
-  const errors = validationResult(req);
+  // const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  // if (!errors.isEmpty()) {
+  //   return res.status(400).json({ errors: errors.array() });
+  // }
 
   // Extraer datos del cuerpo de la solicitud
   const {
@@ -36,7 +36,8 @@ const handleCreateAsegurador = async (req, res) => {
     departamento,
     email,
     password,
-  } = req.body;
+    role
+  } = data;
 
   try {
     // Llamar a tu función para crear el perfil del Asegurador
@@ -50,14 +51,16 @@ const handleCreateAsegurador = async (req, res) => {
       departamento,
       email,
       password,
+      role
     );
 
     // Devolver una respuesta exitosa
-    return res.status(200).json(result);
+    // return res.status(200).json(result);
+    if(result) return result
   } catch (error) {
     console.error('Error al crear el perfil:', error);
     // Devolver una respuesta de error en caso de problemas al crear el perfil
-    return res.status(500).json({ message: 'Error al crear el perfil.' });
+    return {error};
   }
 };
 

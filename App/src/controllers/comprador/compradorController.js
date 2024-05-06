@@ -13,7 +13,7 @@ const createComprador = async (
   ubicacion,
   email,
   password,
-  rol
+  role
   
 ) => {
   try {
@@ -41,7 +41,7 @@ const createComprador = async (
       ubicacion:ubicacion,
       email:email,
       password:password,
-      rol:rol
+      role:role
     });
 
     await newComprador.save();

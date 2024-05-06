@@ -13,6 +13,7 @@ const createTransportador = async (
   email,
   password,
   ubicacion,
+  role
   
 ) => {
   try {
@@ -37,6 +38,7 @@ const createTransportador = async (
       email:email,
       password:password,
       ubicacion:ubicacion,
+      role:role
     });
 
     await newTransportador.save();
