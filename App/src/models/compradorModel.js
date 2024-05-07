@@ -4,6 +4,7 @@ const compradorOferenteSchema = new mongoose.Schema({
   nit: {
     type: String,
     required: true,
+    unique: true,
   },
   nombre: {
     type: String,
@@ -11,7 +12,11 @@ const compradorOferenteSchema = new mongoose.Schema({
   },
   imagen: String,
   direccion: String,
-  telefono: String,
+  telefono: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   ciudad: String,
   departamento: String,
   ubicacion: {
@@ -29,15 +34,7 @@ const compradorOferenteSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  rol: {
-    type: String,
-    default: 'comprador',
-  },
-  imagen:String,
+  role:{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true },
   rating: {
     type: String,
     default: '5', 

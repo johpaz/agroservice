@@ -1,23 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const productorCampesinoSchema = new mongoose.Schema({
   nit: {
     type: String,
     required: true,
+    unique: true,
   },
   nombre: {
     type: String,
     required: true,
   },
   direccion: String,
-  telefono: String,
-  imagen:String,
-  ciudad:String,
-  departamento:String,
+  telefono: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  imagen: String,
+  ciudad: String,
+  departamento: String,
   ubicacion: {
     type: {
       type: String,
-      default: 'Point', // Tipo de dato para coordenadas
+      default: "Point", // Tipo de dato para coordenadas
     },
     coordinates: {
       type: [Number], // [longitud, latitud]
@@ -29,13 +34,10 @@ const productorCampesinoSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  rol: {
-    type: String,
-    default: 'productor', 
-  },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   rating: {
     type: String,
-    default: '5', 
+    default: "5",
   },
   fechaCreacion: {
     type: Date,
@@ -44,8 +46,8 @@ const productorCampesinoSchema = new mongoose.Schema({
 });
 
 // Indicar el tipo de índice para las coordenadas para permitir consultas geoespaciales
-productorCampesinoSchema.index({ ubicacion: '2dsphere' });
+productorCampesinoSchema.index({ ubicacion: "2dsphere" });
 
-const Productor = mongoose.model('Productor', productorCampesinoSchema);
+const Productor = mongoose.model("Productor", productorCampesinoSchema);
 
 module.exports = Productor;

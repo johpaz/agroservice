@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const aseguradoraSchema = new mongoose.Schema({
   nit: {
@@ -11,7 +11,11 @@ const aseguradoraSchema = new mongoose.Schema({
     required: true,
   },
   imagen: String,
-  telefono: String,
+  telefono: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   direccion: String,
   ciudad: String,
   departamento: String,
@@ -20,18 +24,10 @@ const aseguradoraSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  imagen:String,
-  password: {
-    type: String,
-    required: true,
-  },
-  rol: {
-    type: String,
-    default: 'asegurador',
-  },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   rating: {
     type: String,
-    default: '5', 
+    default: "5",
   },
   fechaCreacion: {
     type: Date,
@@ -39,6 +35,6 @@ const aseguradoraSchema = new mongoose.Schema({
   },
 });
 
-const Aseguradora = mongoose.model('Aseguradora', aseguradoraSchema);
+const Aseguradora = mongoose.model("Aseguradora", aseguradoraSchema);
 
 module.exports = Aseguradora;

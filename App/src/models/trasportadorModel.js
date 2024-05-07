@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const transportadorSchema = new mongoose.Schema({
   nit: {
@@ -11,7 +11,11 @@ const transportadorSchema = new mongoose.Schema({
     required: true,
   },
   imagen: String,
-  telefono: String,
+  telefono: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   direccion: String,
   ciudad: String,
   departamento: String,
@@ -20,28 +24,20 @@ const transportadorSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  rol: {
-    type: String,
-    default: 'transportador',
-  }, 
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   ubicacion: {
     type: {
       type: String,
-      default: 'Point', // Tipo de dato para coordenadas
+      default: "Point", // Tipo de dato para coordenadas
     },
     coordinates: {
       type: [Number], // [longitud, latitud]
       default: [0, 0],
     },
   },
-  imagen:String,
   rating: {
     type: String,
-    default: '5', 
+    default: "5",
   },
   fechaCreacion: {
     type: Date,
@@ -49,8 +45,8 @@ const transportadorSchema = new mongoose.Schema({
   },
 });
 
-transportadorSchema.index({ ubicacion: '2dsphere' });
+transportadorSchema.index({ ubicacion: "2dsphere" });
 
-const transportador = mongoose.model('Transportador', transportadorSchema);
+const transportador = mongoose.model("Transportador", transportadorSchema);
 
 module.exports = transportador;

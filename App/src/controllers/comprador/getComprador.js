@@ -14,13 +14,16 @@ const getAllComprador = async (req, res) => {
     }
   };
 
-  const getCompradorById = async (id) => {
+  const getCompradorById = async (req, res) => {
+    const { id  } = req.params
+    // console.log("id", id)
 
     const comprador = await Comprador.findById(id);
+    // console.log('comprador', comprador)
   
     if(!comprador) throw Error (`No existe una categoría de id: ${id}`);
   
-    return comprador;
+    return res.status(200).json({ comprador });
   };
   
   

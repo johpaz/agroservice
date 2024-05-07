@@ -12,8 +12,7 @@ const createComprador = async (
   departamento,
   ubicacion,
   email,
-  password,
-  rol
+  role
   
 ) => {
   try {
@@ -23,12 +22,11 @@ const createComprador = async (
     if (existingComprador) {
       return {
         success: false,
-        message: 'El Comprador ya existe.'
+        message: 'El Comprador ya esta registrado.'
       };
     }
 
     
-
     // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
     const newComprador = new Comprador({
       nit: nit,
@@ -40,15 +38,15 @@ const createComprador = async (
       departamento:departamento,
       ubicacion:ubicacion,
       email:email,
-      password:password,
-      rol:rol
+      role:role
     });
 
     await newComprador.save();
 
     return {
       success: true,
-      message: 'Comprador creado exitosamente.'
+      message: 'Comprador creado exitosamente.',
+      user: newComprador
     };
   } catch (error) {
     console.error('Error al crear el Comprador:', error);
