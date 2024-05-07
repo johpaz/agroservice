@@ -22,12 +22,11 @@ const createAseguradora = async (
     if (existingAseguradora) {
       return {
         success: false,
-        message: 'La Aseguradora ya existe.'
+        message: 'La Aseguradora ya esta registrada.'
       };
     }
 
-    
-
+  
     // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
     const newAseguradora = new Aseguradoras({
       nit: nit,
@@ -46,7 +45,8 @@ const createAseguradora = async (
 
     return {
       success: true,
-      message: 'Aseguradora creado exitosamente.'
+      message: 'Aseguradora creado exitosamente.',
+      user: newAseguradora
     };
   } catch (error) {
     console.error('Error al crear la aseguradora:', error);

@@ -14,8 +14,6 @@ const createProductor = async (
   email,
   password,
   role
-  
-  
 ) => {
   try {
     // Verificar si el usuario ya existe por su correo electrónico
@@ -24,7 +22,7 @@ const createProductor = async (
     if (existingProductor) {
       return {
         success: false,
-        message: 'El Productor ya existe.'
+        message: 'El Productor ya esta registrado.'
       };
     }
 
@@ -46,7 +44,8 @@ const createProductor = async (
     
     return {
       success: true,
-      message: 'Productor creado exitosamente.'
+      message: 'Productor creado exitosamente.',
+      user: newProductor
     };
   } catch (error) {
     console.error('Error al crear el Productor:', error);

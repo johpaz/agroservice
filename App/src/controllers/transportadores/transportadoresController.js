@@ -23,7 +23,7 @@ const createTransportador = async (
     if (existingTransportador) {
       return {
         success: false,
-        message: 'El Transportador ya existe.'
+        message: 'El Transportador ya esta registrado.'
       };
     }
    // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
@@ -45,7 +45,8 @@ const createTransportador = async (
 
     return {
       success: true,
-      message: 'Transportador creado exitosamente.'
+      message: 'Transportador creado exitosamente.',
+      user: newTransportador
     };
   } catch (error) {
     console.error('Error al crear el Transportador:', error);
