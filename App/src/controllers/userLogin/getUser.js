@@ -5,9 +5,7 @@ const Asegurador = require("../../models/aseguradorasModel");
 const Transportador = require("../../models/trasportadorModel");
 
 const getUser = async (credential) => {
-    console.log('credential', credential)
   const isEmail = credential.includes("@");
-  console.log('is email', isEmail)
   let user;
   
   if (isEmail) {

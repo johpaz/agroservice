@@ -12,6 +12,7 @@ const fincaRouter = require('./fincasRoutes')
 const categoriaRouter = require('./categoriaRoutes')
 const ofertasroutes = require('./publicacionRoutes')
 const authRouter = require('./authRoutes')
+const ubicacionesRouter = require('./ubicacionesRoutes')
 
 
 router = Router();  
@@ -26,6 +27,7 @@ router.use('/productor', productorRouter);
 router.use('/comprador', compradorRouter);
 router.use('/aseguradora', aseguradoraRouter);
 router.use('/role', roleRouter);
+router.use('/uploadUbicaciones', ubicacionesRouter) //para cargar y traer las ciudades y departamentos
 
 
 
