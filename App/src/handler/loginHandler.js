@@ -13,7 +13,7 @@ const loginHandler = async (req, res) => {
         return res.status(204).json({success: false, message: 'Usuario no encontrado'})
     } catch (error) {
         console.log('Error al buscar el usuario', error)
-        return res.status(404).json({message: 'Error al buscar el usuario'})
+        return res.status(404).json({ message: 'Error al buscar el  Usuario'})
     }
 
 }
