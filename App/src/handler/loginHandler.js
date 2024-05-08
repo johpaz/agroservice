@@ -1,7 +1,6 @@
 const getUser = require('../controllers/userLogin/getUser')
 
 const loginHandler = async (req, res) => {
-    console.log('reqlogin', req.body)
     const {email, telefono} = req.body //params o body ?
     const credential = email ? email : telefono
 

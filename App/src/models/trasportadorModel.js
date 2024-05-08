@@ -35,6 +35,13 @@ const transportadorSchema = new mongoose.Schema({
       default: [0, 0],
     },
   },
+  usuarioMarketplace: {
+    type:Boolean,
+    default: true
+  },
+  productosMarketplace: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'ProductoMarketplace'
+  },
   rating: {
     type: String,
     default: "5",

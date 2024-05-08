@@ -25,6 +25,13 @@ const aseguradoraSchema = new mongoose.Schema({
     unique: true,
   },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
+  usuarioMarketplace: {
+    type:Boolean,
+    default: true
+  },
+  productosMarketplace: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'ProductoMarketplace'
+  },
   rating: {
     type: String,
     default: "5",
