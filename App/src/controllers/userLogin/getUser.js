@@ -9,7 +9,7 @@ const getUser = async (credential) => {
   const isEmail = credential.includes("@");
   console.log('is email', isEmail)
   let user;
-  
+
   if (isEmail) {
     const productor = await Productor.findOne({ email: credential });
         if(productor) user = productor
@@ -41,7 +41,9 @@ const getUser = async (credential) => {
 
   if(user){
     return user
-  } else throw Error('Usuario no encontrado')
+  }return{
+    success: false, message: 'Usuario no encontrado'
+  } 
 
 };
 
