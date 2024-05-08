@@ -5,6 +5,6 @@ const loginHandler = require('../handler/loginHandler')
 
 
 authRouter.post('/register', validateCreateUser, handleRegister);
-authRouter.get('/login', loginHandler)
+authRouter.post('/login', loginHandler)
 
 module.exports= authRouter
