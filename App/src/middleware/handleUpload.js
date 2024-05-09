@@ -5,6 +5,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 // middleware para manejar la carga del archivo
-const handleUpload = upload.single('CodigoDane'); // el nombre del campo en el formulario del cliente
+const handleUploadDepartamentos = upload.single('departamentos'); // el nombre del campo en el formulario del cliente
+const handleUploadCiudades = upload.single('ciudades'); // el nombre del campo en el formulario del cliente
 
-module.exports = handleUpload;
+module.exports = {handleUploadDepartamentos, handleUploadCiudades};
