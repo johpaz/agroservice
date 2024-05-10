@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Aseguradoras = require('../../models/aseguradorasModel');
-
+const Role = require('../../models/roleModel');
 
 const createAseguradora = async (
   nit,
@@ -42,12 +42,11 @@ const createAseguradora = async (
     });
 
     await newAseguradora.save();
-
+    const userType = await Role.findOne({ _id: newAseguradora.role }) 
     return {
-      success: true,
-      message: 'Aseguradora creado exitosamente.',
-      user: newAseguradora
-    };
+     session:newAseguradora, success:true,userType: userType.name 
+    }
+    
   } catch (error) {
     console.error('Error al crear la aseguradora:', error);
     return { success: false, message: 'Error al crear la aseguradora.' };

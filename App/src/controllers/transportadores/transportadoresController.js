@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Transportador = require('../../models/trasportadorModel');
-
+const Role = require('../../models/roleModel');
 
 const createTransportador = async (
   nit,
@@ -42,11 +42,9 @@ const createTransportador = async (
     });
 
     await newTransportador.save();
-
+    const userType = await Role.findOne({ _id: newTransportador.role }) 
     return {
-      success: true,
-      message: 'Transportador creado exitosamente.',
-      user: newTransportador
+      session: newTransportador,success:true,userType: userType.name 
     };
   } catch (error) {
     console.error('Error al crear el Transportador:', error);

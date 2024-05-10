@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Comprador = require('../../models/compradorModel');
-
+const Role = require('../../models/roleModel');
 
 const createComprador = async (
   nit,
@@ -42,11 +42,9 @@ const createComprador = async (
     });
 
     await newComprador.save();
-
+    const userType = await Role.findOne({ _id: newComprador.role }) 
     return {
-      success: true,
-      message: 'Comprador creado exitosamente.',
-      user: newComprador
+       session: newComprador,success:true,userType: userType.name 
     };
   } catch (error) {
     console.error('Error al crear el Comprador:', error);
