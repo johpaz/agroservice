@@ -6,8 +6,8 @@ const Transportador = require("../../models/trasportadorModel");
 
 const getUser = async (credential) => {
   const isEmail = credential.includes("@");
-  let user;
-
+  let user = null;
+  
   if (isEmail) {
     const productor = await Productor.findOne({ email: credential });
         if(productor) user = productor
@@ -39,10 +39,37 @@ const getUser = async (credential) => {
 
   if(user){
     return user
-  }return{
-    success: false, message: 'Usuario no encontrado'
   } 
 
 };
+const getUserById = async (req, res) => {
+  const { id  } = req.params
+  console.log(id);
+  // Buscar el comprador por su ID
+  const comprador = await Comprador.findById(id);
+  
+  // Si no se encuentra un comprador, buscar un asegurador
+  if (!comprador) {
+    const asegurador = await Asegurador.findById(id);
+    
+    // Si no se encuentra un asegurador, buscar un transportador
+    if (!asegurador) {
+      const transportador = await Transportador.findById(id);
+      
+      // Si no se encuentra un transportador, lanzar un error
+      if (!transportador) throw new Error(`No existe ningún usuario con el ID: ${id}`);
+      
+      // Si se encuentra un transportador, devolverlo
+      return res.status(200).json({ transportador });
+    }
+    
+    // Si se encuentra un asegurador, devolverlo
+    return res.status(200).json({ asegurador });
+  }
+  
+  // Si se encuentra un comprador, devolverlo
+  return res.status(200).json({ comprador });
+};
 
-module.exports = getUser;
+
+module.exports = {getUser,getUserById};
