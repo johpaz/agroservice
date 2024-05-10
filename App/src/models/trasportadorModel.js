@@ -35,6 +35,10 @@ const transportadorSchema = new mongoose.Schema({
       default: [0, 0],
     },
   },
+  redirectPath:{
+    type:String,
+    default: "/dashboardClient"
+  },
   usuarioMarketplace: {
     type:Boolean,
     default: true
