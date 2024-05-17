@@ -2,9 +2,8 @@ const { validationResult, body } = require("express-validator");
 const { handleCreateProductor } = require("../handler/productorHandler");
 const { handleCreateComprador } = require("../handler/compradorHandler");
 const { handleCreateAsegurador } = require("../handler/aseguadorHandler");
-const {
-  handleCreateTransportador,
-} = require("../handler/transportadoraHandler");
+const { handleCreateTransportador,} = require("../handler/transportadoraHandler");
+
 
 const validateCreateUser = [
   body("nit").notEmpty().withMessage("El campo NIT es obligatorio."),
@@ -33,7 +32,6 @@ const validateCreateUser = [
 const handleRegister = async (req, res) => {
   const errors = validationResult(req);
   const data = req.body;
-  console.log("data", data);
   let user;
 
   if (!errors.isEmpty()) {
@@ -65,7 +63,8 @@ const handleRegister = async (req, res) => {
     } else {
       return res.status(400).json({ error: "Rol inválido" });
     }
-
+    
+    
     return res.status(200).json(user);
   } catch (error) {
     return res.status(500).json({ error: error.message });

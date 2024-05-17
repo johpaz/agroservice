@@ -47,6 +47,10 @@ const productorCampesinoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "PedidoMarketplace",
   },
+  redirectPath:{
+    type:String,
+    default: "/dashboardProductor"
+  },
   rating: {
     type: String,
     default: "5",

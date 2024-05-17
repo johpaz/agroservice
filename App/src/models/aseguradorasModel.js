@@ -24,6 +24,10 @@ const aseguradoraSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  redirectPath:{
+    type:String,
+    default: "/dashboardClient"
+  },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   usuarioMarketplace: {
     type: Boolean,

@@ -24,10 +24,15 @@ const compradorOferenteSchema = new mongoose.Schema({
       type: String,
       default: "Point",
     },
+    
     coordinates: {
       type: [Number],
       default: [0, 0],
     },
+  },
+  redirectPath:{
+    type:String,
+    default: "/dashboardClient"
   },
   email: {
     type: String,

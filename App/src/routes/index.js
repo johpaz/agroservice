@@ -15,9 +15,11 @@ const authRouter = require('./authRoutes')
 const {ubicacionesRouter,ciudadesRouter} = require('./ubicacionesRoutes')
 const marketPlaceRouter = require('./marketPlaceRoutes')
 
+const userRouter = require('./userRoutes')
 
 router = Router();  
 
+router.use('/user', userRouter) 
 router.use('/auth', authRouter) 
 router.use('/finca', fincaRouter);
 router.use('/publicacion', ofertasroutes);

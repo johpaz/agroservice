@@ -4,7 +4,6 @@ const getDepartamento = require('../controllers/ubicaciones/getDepartamentos')
 const getDepartamentos = async (_req, res) => {
     try {
         const departamentos = await getDepartamento()
-        console.log('dep', departamentos)
         if(departamentos){
             return res.status(200).json(departamentos)
         } 
