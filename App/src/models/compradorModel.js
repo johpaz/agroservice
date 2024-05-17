@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const compradorOferenteSchema = new mongoose.Schema({
   nit: {
@@ -22,7 +22,7 @@ const compradorOferenteSchema = new mongoose.Schema({
   ubicacion: {
     type: {
       type: String,
-      default: 'Point',
+      default: "Point",
     },
     coordinates: {
       type: [Number],
@@ -34,17 +34,22 @@ const compradorOferenteSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  role:{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', required: true },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   usuarioMarketplace: {
-    type:Boolean,
-    default: true
+    type: Boolean,
+    default: true,
   },
   productosMarketplace: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'ProductoMarketplace'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ProductoMarketplace",
+  },
+  comprasEnMarketplace: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "PedidoMarketplace",
   },
   rating: {
     type: String,
-    default: '5', 
+    default: "5",
   },
   fechaCreacion: {
     type: Date,
@@ -52,8 +57,11 @@ const compradorOferenteSchema = new mongoose.Schema({
   },
 });
 
-compradorOferenteSchema.index({ ubicacion: '2dsphere' });
+compradorOferenteSchema.index({ ubicacion: "2dsphere" });
 
-const CompradorOferente = mongoose.model('CompradorOferente', compradorOferenteSchema);
+const CompradorOferente = mongoose.model(
+  "CompradorOferente",
+  compradorOferenteSchema
+);
 
 module.exports = CompradorOferente;

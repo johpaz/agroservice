@@ -13,7 +13,10 @@ const productosMarketplaceSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-
+  amount: {
+    type: Number,
+    default: 0
+  },
 })
 
 const ProductoMarketplace = mongoose.model('ProductoMarketplace', productosMarketplaceSchema)
