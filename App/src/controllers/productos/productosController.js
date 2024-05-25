@@ -1,46 +1,27 @@
-require('dotenv').config();
 const Producto = require('../../models/productosModel');
 
-
-const createProducto = async (
-  nombre,
-  descripcion,
-  cantidad,
-  categorias
-) => {
+const createProducto = async ({ nombre, descripcion, imagen, categorias }) => {
   try {
-    // Verificar si el usuario ya existe por su correo electrónico
-    const existingProducto = await Producto.findOne({id:_id });
-
-    if (existingProducto) {
-      return {
-        success: false,
-        message: 'El Producto ya existe.'
-      };
-    }
-
-    
-
-    // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
+    // Crear un nuevo producto con los campos proporcionados
     const newProducto = new Producto({
-      nombre:nombre,
-      descripcion:descripcion,
-      cantidad:cantidad,
-      categorias:categorias
+      nombre,
+      descripcion,
+      imagen,
+      categorias
     });
 
     await newProducto.save();
 
     return {
       success: true,
-      message: 'Producto creado exitosamente.'
+      message: 'Producto creado exitosamente.',
+      data: newProducto
     };
   } catch (error) {
-    console.error('Error al crear el Producto:', error);
-    return { success: false, message: 'Error al crear el Producto.' };
+    console.error('Error al crear el producto:', error);
+    throw new Error('Error al crear el producto.');
   }
 };
-
 
 module.exports = {
   createProducto,

@@ -44,7 +44,7 @@ const getUser = async (credential) => {
 };
 const getUserById = async (req, res) => {
   const { id  } = req.params
-  console.log(id);
+  
   // Buscar el comprador por su ID
   const comprador = await Comprador.findById(id);
   
@@ -57,10 +57,14 @@ const getUserById = async (req, res) => {
       const transportador = await Transportador.findById(id);
       
       // Si no se encuentra un transportador, lanzar un error
-      if (!transportador) throw new Error(`No existe ningún usuario con el ID: ${id}`);
-      
+      if (!transportador){
+        const productor = await Productor.findById(id);
+        if(!productor)  {throw new Error(`No existe ningún usuario con el ID: ${id}`);}
+        return res.status(200).json({ productor });
+      }
       // Si se encuentra un transportador, devolverlo
       return res.status(200).json({ transportador });
+        
     }
     
     // Si se encuentra un asegurador, devolverlo
