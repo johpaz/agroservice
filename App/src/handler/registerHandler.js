@@ -37,7 +37,6 @@ const handleRegister = async (req, res) => {
   try {
     const fullAddress = `${data.direccion}, ${data.ciudad}, ${data.departamento}, Colombia`;
     const coordinates = await getCoordinates(fullAddress);
-    console.log(coordinates);
     data.ubicacion = coordinates; 
     console.log(data);
     let user;
