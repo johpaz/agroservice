@@ -14,9 +14,11 @@ const ofertasroutes = require('./publicacionRoutes')
 const authRouter = require('./authRoutes')
 const {ubicacionesRouter,ciudadesRouter} = require('./ubicacionesRoutes')
 const userRouter = require('./userRoutes')
+const blogRouter = require('./blogRoutes')
 
 router = Router();  
 
+router.use('/blog', blogRouter) 
 router.use('/user', userRouter) 
 router.use('/auth', authRouter) 
 router.use('/finca', fincaRouter);
