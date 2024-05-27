@@ -24,15 +24,15 @@ const compradorOferenteSchema = new mongoose.Schema({
       type: String,
       default: "Point",
     },
-    
+
     coordinates: {
       type: [Number],
       default: [0, 0],
     },
   },
-  redirectPath:{
-    type:String,
-    default: "/dashboardClient"
+  redirectPath: {
+    type: String,
+    default: "/dashboardClient",
   },
   email: {
     type: String,
@@ -45,11 +45,11 @@ const compradorOferenteSchema = new mongoose.Schema({
     default: true,
   },
   productosMarketplace: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
     ref: "ProductoMarketplace",
   },
   comprasEnMarketplace: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
     ref: "PedidoMarketplace",
   },
   rating: {

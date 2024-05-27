@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const productosMarketplaceSchema = new mongoose.Schema({
   nombre: {
@@ -6,19 +6,27 @@ const productosMarketplaceSchema = new mongoose.Schema({
     required: true,
   },
   descripcion: String,
-  imagen:String,
+  imagen: String,
   precio: String,
-  stock:String,
+  stock: Number,
+  isActive: {
+    type: Boolean,
+    default: true
+  },
   tieneVenta: {
     type: Boolean,
-    default: false
+    default: false,
   },
+  ventasConcretadas: Number,
   amount: {
     type: Number,
-    default: 0
+    default: 0,
   },
-})
+});
 
-const ProductoMarketplace = mongoose.model('ProductoMarketplace', productosMarketplaceSchema)
+const ProductoMarketplace = mongoose.model(
+  "ProductoMarketplace",
+  productosMarketplaceSchema
+);
 
-module.exports = ProductoMarketplace
+module.exports = ProductoMarketplace;

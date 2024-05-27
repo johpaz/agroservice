@@ -40,11 +40,11 @@ const productorCampesinoSchema = new mongoose.Schema({
     default: true,
   },
   productosMarketplace: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
     ref: "ProductoMarketplace",
   },
   comprasEnMarketplace: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
     ref: "PedidoMarketplace",
   },
   redirectPath:{
