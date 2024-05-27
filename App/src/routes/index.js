@@ -13,6 +13,8 @@ const categoriaRouter = require('./categoriaRoutes')
 const ofertasroutes = require('./publicacionRoutes')
 const authRouter = require('./authRoutes')
 const {ubicacionesRouter,ciudadesRouter} = require('./ubicacionesRoutes')
+const marketPlaceRouter = require('./marketPlaceRoutes')
+
 const userRouter = require('./userRoutes')
 const blogRouter = require('./blogRoutes')
 
@@ -31,7 +33,8 @@ router.use('/comprador', compradorRouter);
 router.use('/aseguradora', aseguradoraRouter);
 router.use('/role', roleRouter);
 router.use('/uploadUbicaciones', ubicacionesRouter) //para cargar y traer las ciudades y departamentos
-router.use('/ciudades', ciudadesRouter) 
+router.use('/ciudades', ciudadesRouter)
+router.use('/marketplace', marketPlaceRouter)
 
 
 module.exports = router;

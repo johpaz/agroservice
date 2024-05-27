@@ -41,6 +41,19 @@ const handleRegister = async (req, res) => {
     console.log(data);
     let user;
 
+    //pruebas locales de moira
+    // if (data.role == "6647a6828f10a4c9e144780a") {
+    //   user = await handleCreateComprador(data);
+    // } else if (data.role == "6647a6aa8f10a4c9e144780d") {
+    //   user = await handleCreateTransportador(data);
+    // } else if (data.role == "6647a63b8f10a4c9e1447804") {
+    //   user = await handleCreateProductor(data);
+    // } else if (data.role == "6647a67a8f10a4c9e1447807") {
+    //   user = await handleCreateAsegurador(data);
+    // } else {
+    //   return res.status(400).json({ error: "Rol inválido" });
+    // }
+    //cloud database del proyecto
     if (data.role == "663908d920dc679dae2d35a6") {
       user = await handleCreateComprador(data);
     } else if (data.role == "6639090120dc679dae2d35ac") {

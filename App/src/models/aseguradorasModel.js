@@ -30,11 +30,16 @@ const aseguradoraSchema = new mongoose.Schema({
   },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   usuarioMarketplace: {
-    type:Boolean,
-    default: true
+    type: Boolean,
+    default: true,
   },
   productosMarketplace: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'ProductoMarketplace'
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "ProductoMarketplace",
+  },
+  comprasEnMarketplace: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "PedidoMarketplace",
   },
   rating: {
     type: String,
