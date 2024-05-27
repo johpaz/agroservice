@@ -2,8 +2,8 @@ const { validationResult, body } = require("express-validator");
 const { handleCreateProductor } = require("../handler/productorHandler");
 const { handleCreateComprador } = require("../handler/compradorHandler");
 const { handleCreateAsegurador } = require("../handler/aseguadorHandler");
-const { handleCreateTransportador,} = require("../handler/transportadoraHandler");
-
+const { handleCreateTransportador } = require("../handler/transportadoraHandler");
+const getCoordinates = require('../handler/ubicacionHandler'); // Asegúrate de ajustar la ruta según tu estructura de proyecto
 
 const validateCreateUser = [
   body("nit").notEmpty().withMessage("El campo NIT es obligatorio."),
@@ -23,22 +23,24 @@ const validateCreateUser = [
     .withMessage(
       "El campo email debe ser una dirección de correo electrónico válida."
     ),
-  //   body('password')
-  //     .notEmpty().withMessage('El campo contraseña es obligatorio.')
-  //     .isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres.'),
   body("role").notEmpty().withMessage("El campo role es obligatorio."),
 ];
 
 const handleRegister = async (req, res) => {
   const errors = validationResult(req);
   const data = req.body;
-  let user;
-
+  
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
   try {
+    const fullAddress = `${data.direccion}, ${data.ciudad}, ${data.departamento}, Colombia`;
+    const coordinates = await getCoordinates(fullAddress);
+    data.ubicacion = coordinates; 
+    console.log(data);
+    let user;
+
     //pruebas locales de moira
     // if (data.role == "6647a6828f10a4c9e144780a") {
     //   user = await handleCreateComprador(data);
@@ -63,7 +65,6 @@ const handleRegister = async (req, res) => {
     } else {
       return res.status(400).json({ error: "Rol inválido" });
     }
-    
     
     return res.status(200).json(user);
   } catch (error) {
