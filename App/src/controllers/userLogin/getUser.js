@@ -8,75 +8,44 @@ const Admin = require("../../models/adminModel");
 const getUser = async (credential) => {
   const isEmail = credential.includes("@");
   let user = null;
-  
+  console.log(credential);
   if (isEmail) {
-    const admin = await Admin.findOne({ email: credential });
-        if(admin) user = admin
-    const productor = await Productor.findOne({ email: credential });
-        if(productor) user = productor
-        
-    const comprador = await Comprador.findOne({ email: credential });
-        if(comprador) user = comprador
-    
-    const asegurador = await Asegurador.findOne({ email: credential });
-        if(asegurador) user = asegurador
-       
-    const transportador = await Transportador.findOne({ email: credential });
-            if(transportador) user = transportador
-            
-    } else {
-
-        const productor = await Productor.findOne({ telefono: credential });
-        if(productor) user = productor
-        
-    const comprador = await Comprador.findOne({ telefono: credential });
-        if(comprador) user = comprador
-    
-    const asegurador = await Asegurador.findOne({ telefono: credential });
-        if(asegurador) user = asegurador
-       
-    const transportador = await Transportador.findOne({ telefono: credential });
-            if(transportador) user = transportador
- 
+    user = 
+           await Productor.findOne({ email: credential }) ||
+           await Comprador.findOne({ email: credential }) ||
+           await Asegurador.findOne({ email: credential }) ||
+           await Transportador.findOne({ email: credential })||
+           await Admin.findOne({ email: credential });
+           console.log(user);
+  } else {
+    user =  
+           await Productor.findOne({ telefono: credential }) ||
+           await Comprador.findOne({ telefono: credential }) ||
+           await Asegurador.findOne({ telefono: credential }) ||
+           await Transportador.findOne({ telefono: credential })||
+           await Admin.findOne({ telefono: credential });
   }
 
-  if(user){
-    return user
-  } 
-
+  return user;
 };
+
 const getUserById = async (req, res) => {
-  const { id  } = req.params
-  
-  // Buscar el comprador por su ID
-  const comprador = await Comprador.findById(id);
-  
-  // Si no se encuentra un comprador, buscar un asegurador
-  if (!comprador) {
-    const asegurador = await Asegurador.findById(id);
-    
-    // Si no se encuentra un asegurador, buscar un transportador
-    if (!asegurador) {
-      const transportador = await Transportador.findById(id);
-      
-      // Si no se encuentra un transportador, lanzar un error
-      if (!transportador){
-        const productor = await Productor.findById(id);
-        if(!productor)  {throw new Error(`No existe ningún usuario con el ID: ${id}`);}
-        return res.status(200).json({ productor });
-      }
-      // Si se encuentra un transportador, devolverlo
-      return res.status(200).json({ transportador });
-        
+  const { id } = req.params;
+
+  try {
+    const user = await Comprador.findById(id) ||
+                 await Asegurador.findById(id) ||
+                 await Transportador.findById(id) ||
+                 await Productor.findById(id);
+
+    if (!user) {
+      throw new Error(`No existe ningún usuario con el ID: ${id}`);
     }
-    
-    // Si se encuentra un asegurador, devolverlo
-    return res.status(200).json({ asegurador });
+
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
-  
-  // Si se encuentra un comprador, devolverlo
-  return res.status(200).json({ comprador });
 };
 
-
-module.exports = {getUser,getUserById};
+module.exports = { getUser, getUserById };

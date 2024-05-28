@@ -1,5 +1,5 @@
 const {Router}= require('express');
-const {handlerCreateProduct, getAllProducts, getUserProducts} = require('../handler/marketPlaceHandler')
+const {handlerCreateProduct, getAllProducts, getUserProducts, editProduct} = require('../handler/marketPlaceHandler')
 
 
 const marketPlaceRouter = Router()
@@ -8,6 +8,7 @@ const marketPlaceRouter = Router()
 marketPlaceRouter.get('/allProducts', getAllProducts)
 marketPlaceRouter.get('/userProducts/:id', getUserProducts)
 marketPlaceRouter.post('/createProducto', handlerCreateProduct)
+marketPlaceRouter.put('/updateProduct/:id', editProduct)
 
 
 module.exports= marketPlaceRouter;

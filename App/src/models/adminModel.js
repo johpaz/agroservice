@@ -14,15 +14,16 @@ const adminSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
-  redirectPath:{
-    type:String,
+  role: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Role", 
+    required: true 
+  },
+  redirectPath: {
+    type: String,
     default: "/dashboardAdmin"
   }
-  
 });
-
-
 
 const Admin = mongoose.model("Admin", adminSchema);
 
