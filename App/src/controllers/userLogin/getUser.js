@@ -3,12 +3,15 @@ const Productor = require("../../models/productoresModel");
 const Comprador = require("../../models/compradorModel");
 const Asegurador = require("../../models/aseguradorasModel");
 const Transportador = require("../../models/trasportadorModel");
+const Admin = require("../../models/adminModel");
 
 const getUser = async (credential) => {
   const isEmail = credential.includes("@");
   let user = null;
   
   if (isEmail) {
+    const admin = await Admin.findOne({ email: credential });
+        if(admin) user = admin
     const productor = await Productor.findOne({ email: credential });
         if(productor) user = productor
         

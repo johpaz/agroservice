@@ -17,9 +17,11 @@ const marketPlaceRouter = require('./marketPlaceRoutes')
 const userRouter = require('./userRoutes')
 const blogRouter = require('./blogRoutes')
 const eventoRouter = require('./eventosRoutes')
+const adminRouter = require('./adminRoutes')
 
 router = Router();  
 
+router.use('/admin', adminRouter) 
 router.use('/evento', eventoRouter) 
 router.use('/blog', blogRouter) 
 router.use('/user', userRouter) 
