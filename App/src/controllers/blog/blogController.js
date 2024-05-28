@@ -1,6 +1,6 @@
 const Blog = require('../../models/blogModel');
 
-const createBlog = async ({titulo, contenido, autor, fechaPublicacionDate, etiquetas, urlSlug, metaDescripcion}) => {
+const createBlog = async ({titulo, contenido, autor, fechaPublicacion, etiquetas, urlSlug, metaDescripcion}) => {
   console.log(titulo);
   try {
     // Verificar si el blog ya existe por su título
@@ -18,7 +18,7 @@ const createBlog = async ({titulo, contenido, autor, fechaPublicacionDate, etiqu
       titulo: titulo,
       contenido: contenido,
       autor: autor,
-      fechaPublicacion: fechaPublicacionDate,
+      fechaPublicacion: fechaPublicacion,
       etiquetas: etiquetas,
       urlSlug: urlSlug,
       metaDescripcion: metaDescripcion
