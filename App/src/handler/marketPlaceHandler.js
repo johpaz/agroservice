@@ -1,6 +1,7 @@
 const createNewProduct = require('../controllers/marketplace/createNewProduct')
 const Productomarketplace = require('../models/productoMarketplace')
 const getProductsByUserId = require('../controllers/marketplace/getProductsByUserId')
+const updateProduct = require('../controllers/marketplace/updateProduct')
 
 const handlerCreateProduct = async (req, res) => {
     const {producto, userId} = req.body
@@ -41,4 +42,17 @@ const getUserProducts = async (req, res) => {
     }
 }
 
-module.exports =  {handlerCreateProduct, getAllProducts, getUserProducts }
+const editProduct = async (req, res) => {
+    const {id} = req.params //el id del producto
+    const newData = req.body
+    // console.log('data', newData)
+    try {
+        const response = await updateProduct(id, newData) //devolver el producto actualizado
+        res.status(200).json(response)
+    } catch (error) {
+        console.log('error', error.message)
+        res.status(401).json({Error: 'No se pudo actualizar el producto.'})
+    }
+}
+
+module.exports =  {handlerCreateProduct, getAllProducts, getUserProducts, editProduct }
