@@ -22,6 +22,23 @@ const getAllPublicacion = async (req, res) => {
   
     return publicacion;
   };
+ 
+ 
+  const getPublicacionByUser = async (req, res) => {
+    try {
+      const { productorId } = req.body; // Obtener el ID del productor del cuerpo de la solicitud
+      const publicaciones = await Publicacion.find({ productor: productorId });
+      
+      if (!publicaciones || publicaciones.length === 0) {
+        return res.status(404).json(`No se encontraron publicaciones para el productor con ID: ${productorId}`);
+      }
+  
+      return res.status(200).json(publicaciones);
+    } catch (error) {
+      console.error("Error al buscar publicaciones por productor:", error);
+      return res.status(500).json("Error interno del servidor");
+    }
+  };
   
   
   const updatePublicacion = async (req, res) => {
@@ -52,5 +69,6 @@ const getAllPublicacion = async (req, res) => {
   module.exports ={
     getAllPublicacion,
     getPublicacionById,
-    updatePublicacion
+    updatePublicacion,
+    getPublicacionByUser
   }
