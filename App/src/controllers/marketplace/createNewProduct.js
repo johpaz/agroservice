@@ -6,7 +6,7 @@ const Asegurador = require('../../models/aseguradorasModel')
 
 
 const createNewProduct = async ({producto, userId}) => {
-    // console.log('producto', producto, userId)
+    console.log(producto, userId)
     
         const newProduct = new Product({
             nombre: producto.nombre,
