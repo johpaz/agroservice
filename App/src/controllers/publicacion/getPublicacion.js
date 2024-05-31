@@ -65,10 +65,28 @@ const getAllPublicacion = async (req, res) => {
     }
   };
 
+
+  const deletePublicacion = async (req, res) => {
+    const { id } = req.params;
   
+    try {
+      const deletedPublicacion = await Publicacion.findByIdAndDelete(id);
+  
+      if (!deletedPublicacion) {
+        return res.status(404).json({ message: 'Publicación no encontrada' });
+      }
+  
+      res.status(200).json({ message: 'Publicación eliminada exitosamente' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error al eliminar la publicación', error });
+    }
+  };
+  
+
   module.exports ={
     getAllPublicacion,
     getPublicacionById,
     updatePublicacion,
-    getPublicacionByUser
+    getPublicacionByUser,
+    deletePublicacion
   }
