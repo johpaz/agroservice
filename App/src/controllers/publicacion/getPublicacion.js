@@ -42,6 +42,7 @@ const getAllPublicacion = async (req, res) => {
   
   
   const updatePublicacion = async (req, res) => {
+    
     const { id } = req.params;
     const updatedData = req.body;
     
