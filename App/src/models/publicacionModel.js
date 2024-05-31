@@ -15,6 +15,10 @@ const publicacionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  isActive:{
+    type:Boolean,
+    default: true
+  },
   fechaCosecha: {
     type: Date,
     required: true,
