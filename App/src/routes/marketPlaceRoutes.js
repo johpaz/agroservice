@@ -6,7 +6,7 @@ const marketPlaceRouter = Router()
 
 //Rutas para el marketplace
 marketPlaceRouter.get('/allProducts', getAllProducts)
-marketPlaceRouter.delete('/', deleteProductoMarketPlace)
+marketPlaceRouter.delete('/:id', deleteProductoMarketPlace)
 marketPlaceRouter.get('/userProducts/:id', getUserProducts)
 marketPlaceRouter.get('/:id', getProductsById)
 marketPlaceRouter.post('/createProducto', handlerCreateProduct)

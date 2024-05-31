@@ -1,8 +1,4 @@
 const ProductoMarketplace = require("../../models/productoMarketplace");
-const Comprador = require("../../models/compradorModel");
-const Productor = require("../../models/productoresModel");
-const Transportista = require("../../models/trasportadorModel");
-const Asegurador = require("../../models/aseguradorasModel");
 
 const getProductsById = async (req,res) => {
   
@@ -25,17 +21,16 @@ const getProductsById = async (req,res) => {
 };
 const deleteProductoMarketPlace = async (req, res) => {
   const { id } = req.params;
-
+  console.log(id);
   try {
-    const deletedPublicacion = await ProductoMarketplace.findByIdAndDelete(id);
-
-    if (!deletedPublicacion) {
-      return res.status(404).json({ message: 'Publicación no encontrada' });
+    const deletedProductoMarket = await ProductoMarketplace.findByIdAndDelete(id)
+    if (!deletedProductoMarket) {
+      return res.status(404).json({ message: 'Producto no encontrado' });
     }
 
-    res.status(200).json({ message: 'Publicación eliminada exitosamente' });
+    res.status(200).json({ message: 'Producto eliminado exitosamente' });
   } catch (error) {
-    res.status(500).json({ message: 'Error al eliminar la publicación', error });
+    res.status(500).json({ message: 'Error al eliminar la Producto', error });
   }
 };
 
