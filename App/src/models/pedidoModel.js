@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
+
 const pedidoMarketplaceSchema = new mongoose.Schema({
   // Definir el esquema para el pedido
   productos: {
-    type: [ProductoSchema],
+    type: [Array],
     required: true,
   },
   estaPago: {
@@ -25,9 +26,6 @@ const pedidoMarketplaceSchema = new mongoose.Schema({
 });
 
 // Crear el modelo a partir del esquema
-const PedidoMarketplace = mongoose.model(
-  "PedidoMarketplace",
-  pedidoMarketplaceSchema
-);
+const PedidoMarketplace = mongoose.model("PedidoMarketplace", pedidoMarketplaceSchema);
 
 module.exports = PedidoMarketplace;

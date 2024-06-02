@@ -1,14 +1,25 @@
 const createNewProduct = require('../controllers/marketplace/createNewProduct')
-const Productomarketplace = require('../models/productoMarketplace')
+const ProductoMarketplace = require('../models/productoMarketplace')
 const getProductsByUserId = require('../controllers/marketplace/getProductsByUserId')
 const updateProduct = require('../controllers/marketplace/updateProduct')
+const {crearPedido} = require('../controllers/marketplace/pedidos')
 
 const handlerCreateProduct = async (req, res) => {
-    const {producto, userId} = req.body
-    // console.log('product en habdler', producto, userId)
+    const {producto} = req.body
+    console.log('product en habdler', producto)
     try {
-        const newProduct = await createNewProduct({producto, userId})
+        const newProduct = await createNewProduct({producto})
         res.status(200).json(newProduct)
+    } catch (error) {
+        console.log('error', error.message)
+       res.status(400).json({error: error.message})
+    }
+}
+const handlerCreatePedido = async (req, res) => {
+    const {pedido} = req.body
+     try {
+        const newPedido = await crearPedido({pedido})
+        res.status(200).json(newPedido)
     } catch (error) {
         console.log('error', error.message)
        res.status(400).json({error: error.message})
@@ -17,7 +28,7 @@ const handlerCreateProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
     try{
-        const response = await Productomarketplace.find()
+        const response = await ProductoMarketplace.find()
         console.log('response', response)
         res.status(200).json(response)
 
@@ -55,4 +66,4 @@ const editProduct = async (req, res) => {
     }
 }
 
-module.exports =  {handlerCreateProduct, getAllProducts, getUserProducts, editProduct }
+module.exports =  {handlerCreateProduct, getAllProducts, getUserProducts, editProduct,handlerCreatePedido }
