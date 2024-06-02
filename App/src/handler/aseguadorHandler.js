@@ -2,7 +2,6 @@ const { createAseguradora } = require('../controllers/aseguradores/aseguradoresC
 
 
 const handleCreateAsegurador = async (data) => {
-
   // Extraer datos del cuerpo de la solicitud
   const {
     nit,

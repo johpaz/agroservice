@@ -43,6 +43,10 @@ const productorCampesinoSchema = new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: "ProductoMarketplace",
   },
+  pedidosEnMarketplace: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "PedidoMarketplace",
+  },
   comprasEnMarketplace: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: "PedidoMarketplace",
