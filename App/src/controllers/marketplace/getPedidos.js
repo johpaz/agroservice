@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 const PedidoMarketplace = require('../../models/pedidoModel'); 
-
+const Ciudades = require('../../models/ciudadModel')
+const Departamentos = require('../../models/departamentoModel')
 
 const getAllPedidos = async (req, res) => {
 
     try {
-      // Obtiene todos los perfiles independientemente del tipo
-      const pedido = await PedidoMarketplace.find();
+       const pedido = await PedidoMarketplace.find();
+       
+       
+       
        return res.status(200).json(pedido );
     } catch (error) {
       console.error('Error al obtener los Pedidos:', error);
