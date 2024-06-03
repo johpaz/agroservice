@@ -39,19 +39,7 @@ const getAllProducts = async (req, res) => {
 }
 
 
-const getUserProducts = async (req, res) => {
-    const {id} = req.params
-    console.log('id', id)
-    try{
-        const response = await getProductsByUserId(id)
-        // console.log('response', response)
-        res.status(200).json(response)
 
-    } catch (error) {
-        console.log('error', error.message)
-        res.status(401).json({Error: 'No se pudieron cargar los productos.'})
-    }
-}
 
 const editProduct = async (req, res) => {
     const {id} = req.params //el id del producto
@@ -66,4 +54,4 @@ const editProduct = async (req, res) => {
     }
 }
 
-module.exports =  {handlerCreateProduct, getAllProducts, getUserProducts, editProduct,handlerCreatePedido }
+module.exports =  {handlerCreateProduct, getAllProducts,  editProduct,handlerCreatePedido }

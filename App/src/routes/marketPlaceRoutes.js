@@ -1,8 +1,10 @@
 const {Router}= require('express');
-const {handlerCreateProduct, getAllProducts, getUserProducts, editProduct,handlerCreatePedido} = require('../handler/marketPlaceHandler')
-const {getProductsById,deleteProductoMarketPlace} = require('../controllers/marketplace/getProductsMarketPlace')
+const {handlerCreateProduct, getAllProducts,  editProduct,handlerCreatePedido} = require('../handler/marketPlaceHandler')
+const {getProductsById,deleteProductoMarketPlace,} = require('../controllers/marketplace/getProductsMarketPlace')
 const {getPedidosByUserId} =require('../controllers/marketplace/getPedidosByUser')
 const {getAllPedidos} = require('../controllers/marketplace/getPedidos')
+const getProductsByUserId = require('../controllers/marketplace/getProductsByUserId')
+
 
 const marketPlaceRouter = Router()
 
@@ -12,7 +14,7 @@ marketPlaceRouter.get('/pedido', getAllPedidos)
 marketPlaceRouter.post('/pedido', handlerCreatePedido)
 marketPlaceRouter.get('/allProducts', getAllProducts)
 marketPlaceRouter.delete('/:id', deleteProductoMarketPlace)
-marketPlaceRouter.get('/userProducts/:id', getUserProducts)
+marketPlaceRouter.get('/userProducts/:id', getProductsByUserId)
 marketPlaceRouter.get('/:id', getProductsById)
 marketPlaceRouter.post('/createProducto', handlerCreateProduct)
 marketPlaceRouter.put('/updateProduct/:id', editProduct)

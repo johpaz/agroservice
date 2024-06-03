@@ -1,29 +1,22 @@
 const ProductoMarketplace = require("../../models/productoMarketplace");
-const Comprador = require("../../models/compradorModel");
-const Productor = require("../../models/productoresModel");
-const Transportista = require("../../models/trasportadorModel");
-const Asegurador = require("../../models/aseguradorasModel");
 
-const getProductsByUserId = async (id) => {
-  let user =
-    (await Comprador.findOne({ _id: id })) ||
-    (await Productor.findOne({ _id: id })) ||
-    (await Transportista.findOne({ _id: id })) ||
-    (await Asegurador.findOne({ _id: id }));
 
-  if (!user) {
-    console.log("Usuario no encontrado");
-    return null;
-  }
-
-  const productsIds = user.productosMarketplace;
-  const productsDetails = await ProductoMarketplace.find({
-    _id: { $in: productsIds },
-  });
-
-//   console.log("products", productsDetails);
-
-  return productsDetails;
+const getProductsByUserId = async (req,res) => {
+    const { id } = req.params;
+    console.log(id);
+    try {
+      const productosByUser = await ProductoMarketplace.find({
+             vendedorId: id 
+      });
+      
+      if(!productosByUser){
+        return res.status(404).json({ success: false, message: 'Productos no encontrado.' });
+      }  
+      return res.status(200).json(productosByUser);
+    }catch (error) {
+      console.error('Error al buscar el Productos:', error);
+      return res.status(500).json({ success: false, message: 'Error al buscar el Productos.' });
+    }
 };
 
 module.exports = getProductsByUserId;
