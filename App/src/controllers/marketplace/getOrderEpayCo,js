@@ -1,0 +1,43 @@
+import Pedido  from "../../models/pedidoModel";
+import { isValidObjectId } from "mongoose";
+
+
+const getOrder = async (req, res) => {
+  const { x_response, x_id_factura } = req.query;
+
+  if (!x_response || !x_id_factura) {
+    return res.status(200).json('request accepted without query parameters');
+  }
+
+  if (x_response.toLowerCase() !== 'aceptada') {
+    return res.status(200).json('request accepted but denied transaction');
+  }
+
+  const order = await payOrder(x_id_factura);
+
+  if (!order) {
+    return res.status(200).json('request accepted and transaction approved, but not found order in db');
+  }
+
+  return res.status(200).json('request accepted and transaction approved');
+};
+
+const payOrder = async (id) => {
+  if (!isValidObjectId(id)) {
+    return false;
+  }
+
+  try {
+     const order = await Pedido.findByIdAndUpdate({_id:id}, { estaPago: true }, { new: true });
+    if (!order) {
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+module.exports = getOrder
