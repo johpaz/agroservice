@@ -4,7 +4,7 @@ const Publicacion = require('../../models/publicacionModel');
 
 const getAllPublicacion = async (req, res) => {
     try {
-      // Obtiene todos los perfiles independientemente del tipo
+      
       const publicacion = await Publicacion.find();
   
       return res.status(200).json({ publicacion });
