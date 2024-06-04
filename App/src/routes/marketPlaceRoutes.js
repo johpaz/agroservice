@@ -4,11 +4,12 @@ const {getProductsById,deleteProductoMarketPlace,} = require('../controllers/mar
 const {getPedidosByUserId} =require('../controllers/marketplace/getPedidosByUser')
 const {getAllPedidos} = require('../controllers/marketplace/getPedidos')
 const getProductsByUserId = require('../controllers/marketplace/getProductsByUserId')
-
+const {getComprasByUserId} = require('../controllers/marketplace/getComprasByUser')
 
 const marketPlaceRouter = Router()
 
 //Rutas para el marketplace
+marketPlaceRouter.get('/comprasUser/:id', getComprasByUserId)
 marketPlaceRouter.get('/pedidoUser/:id', getPedidosByUserId)
 marketPlaceRouter.get('/pedido', getAllPedidos)
 marketPlaceRouter.post('/pedido', handlerCreatePedido)
