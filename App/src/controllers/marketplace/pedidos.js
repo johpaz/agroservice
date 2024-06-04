@@ -3,7 +3,7 @@ const PedidoMarketplace = require('../../models/pedidoModel');
 const crearPedido = async ({ pedido }) => {
   // Agrupar productos por vendedorId
   const pedidosPorVendedor = pedido.productos.reduce((acc, producto) => {
-    const vendedorId = producto[0].vendedorId;
+    const vendedorId = producto.vendedorId;
     if (!acc[vendedorId]) {
       acc[vendedorId] = [];
     }
@@ -18,7 +18,7 @@ const crearPedido = async ({ pedido }) => {
   const pedidos = await Promise.all(Object.keys(pedidosPorVendedor).map(async (vendedorId) => {
     // Calcular el total para el pedido
     const total = pedidosPorVendedor[vendedorId].reduce((acc, producto) => {
-      return acc + (producto[0].amount * producto[0].precio);
+      return acc + (producto.amount * producto.precio);
     }, 0);
 
     const newPedido = new PedidoMarketplace({
