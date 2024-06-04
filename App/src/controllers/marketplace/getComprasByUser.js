@@ -6,15 +6,13 @@ const Departamento = require('../../models/departamentoModel');
 const getComprasByUserId = async (req, res) => {   
   const { id } = req.params;
   console.log(id);
+
   try {
     const comprasByUser = await PedidoMarketplace.find({
-      "comprador": {
-        $elemMatch: {
-          $elemMatch:  id
-        }
-      }
+      "comprador.id": id
+      
     });
-    
+
     if (comprasByUser.length === 0) {
       return res.status(404).json({ success: false, message: 'No se encontraron pedidos para este usuario.' });
     }  
