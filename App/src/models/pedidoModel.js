@@ -23,6 +23,7 @@ const pedidoMarketplaceSchema = new mongoose.Schema({
     ciudad: String,
     departamento: String,
   },
+  totalPedido:String
 });
 
 // Crear el modelo a partir del esquema
