@@ -17,6 +17,7 @@ const handlerCreateProduct = async (req, res) => {
 }
 const handlerCreatePedido = async (req, res) => {
     const {pedido} = req.body
+    
      try {
         const newPedido = await crearPedido({pedido})
         res.status(200).json(newPedido)
