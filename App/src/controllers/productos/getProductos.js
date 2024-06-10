@@ -23,7 +23,7 @@ const getAllProductos = async (req, res) => {
   
       // Verifica si el Productos existe
       if (!productos) {
-        return res.status(404).json({ success: false, message: 'Productos no encontrado.' });
+        return res.status(202).json({ success: false, message: 'Productos no encontrado.' });
       }
   
       return res.status(200).json({ success: true, productos });
@@ -48,7 +48,7 @@ const getAllProductos = async (req, res) => {
   
       // Verifica si el Productos existe
       if (!productos) {
-        return res.status(404).json({ success: false, message: 'Productos no encontrado.' });
+        return res.status(202).json({ success: false, message: 'Productos no encontrado.' });
       }
   
       return res.status(200).json({ success: true, productos });

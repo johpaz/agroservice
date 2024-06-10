@@ -30,7 +30,7 @@ const getAllPublicacion = async (req, res) => {
       const publicaciones = await Publicacion.find({ productor: productorId });
       
       if (!publicaciones || publicaciones.length === 0) {
-        return res.status(404).json(`No se encontraron publicaciones para el productor con ID: ${productorId}`);
+        return res.status(202).json(`No se encontraron publicaciones para el productor con ID: ${productorId}`);
       }
   
       return res.status(200).json(publicaciones);
@@ -56,7 +56,7 @@ const getAllPublicacion = async (req, res) => {
   
       // Verifica si el Publicacion existe
       if (!publicacion) {
-        return res.status(404).json({ success: false, message: 'Publicacion no encontrado.' });
+        return res.status(202).json({ success: false, message: 'Publicacion no encontrado.' });
       }
   
       return res.status(200).json({ success: true, publicacion });
@@ -74,7 +74,7 @@ const getAllPublicacion = async (req, res) => {
       const deletedPublicacion = await Publicacion.findByIdAndDelete(id);
   
       if (!deletedPublicacion) {
-        return res.status(404).json({ message: 'Publicación no encontrada' });
+        return res.status(202).json({ message: 'Publicación no encontrada' });
       }
   
       res.status(200).json({ message: 'Publicación eliminada exitosamente' });
