@@ -30,7 +30,7 @@ const getAllPublicacion = async (req, res) => {
       const publicaciones = await Publicacion.find({ productor: productorId });
       
       if (!publicaciones || publicaciones.length === 0) {
-        return res.status(404).json(`No se encontraron publicaciones para el productor con ID: ${productorId}`);
+        return res.status(202).json(`No se encontraron publicaciones para el productor con ID: ${productorId}`);
       }
   
       return res.status(200).json(publicaciones);
