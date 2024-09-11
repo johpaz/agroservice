@@ -1,22 +1,21 @@
 const Blog = require('../../models/blogModel');
 
 const createBlog = async ({titulo, contenido, autor, fechaPublicacion, etiquetas, urlSlug, metaDescripcion}) => {
-  console.log(titulo);
   try {
-    // Verificar si el blog ya existe por su título
-    const existingBlog = await Blog.findOne({ titulo: titulo });
+    // Verificar si el blog ya existe por su URL slug
+    const existingBlog = await Blog.findOne({ urlSlug: urlSlug });
     
     if (existingBlog) {
       return {
         success: false,
-        message: 'El Blog con este título ya existe.'
+        message: 'El Blog con esta URL ya existe.'
       };
     }
 
     // Crear una nueva instancia del modelo Blog
     const newBlog = new Blog({
       titulo: titulo,
-      contenido: contenido,
+      contenido: contenido, // Asegúrate de que `contenido` esté en el formato correcto (array de objetos)
       autor: autor,
       fechaPublicacion: fechaPublicacion,
       etiquetas: etiquetas,
