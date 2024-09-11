@@ -3,26 +3,28 @@ const { createBlog } = require('../controllers/blog/blogController');
 const handleBlogCreate = async (req, res) => {
   const {
     titulo,
-    contenido,
+    contenido, // Se espera que sea un array de objetos
     autor,
     etiquetas,
     urlSlug,
-    metaDescripcion
+    metaDescripcion,
+    fechaPublicacion // Asegúrate de que esto venga en el formato correcto o genera una fecha por defecto
   } = req.body;
   
-  // Convertir la cadena de texto de fecha a un objeto de tipo Date
-  const fechaPublicacionDate = new Date();
+  // Convertir la cadena de texto de fecha a un objeto de tipo Date si se proporciona una fecha
+  const fechaPublicacionDate = fechaPublicacion ? new Date(fechaPublicacion) : new Date();
+
   try {
     // Llamar a la función para crear el blog
     const blog = await createBlog({
       titulo,
-      contenido,
+      contenido, // Asegúrate de que esté en el formato correcto (array de objetos)
       autor,
-      fechaPublicacionDate,
+      fechaPublicacion: fechaPublicacionDate,
       etiquetas,
       urlSlug,
-      metaDescripcion}
-    );
+      metaDescripcion
+    });
     res.status(200).json(blog);
     
   } catch (error) {

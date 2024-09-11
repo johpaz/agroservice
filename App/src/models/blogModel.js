@@ -1,59 +1,68 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-// Define el esquema del blog
-const blogSchema = new mongoose.Schema({
-  titulo: {
+// Definición del esquema para el contenido del blog
+const contenidoSchema = new Schema({
+  tipo: {
     type: String,
-    required: true,
-
+    enum: ['parrafo', 'encabezado', 'subencabezado', 'lista', 'cita', 'imagen'],
+    required: true
   },
   contenido: {
     type: String,
-    required: true
+    trim: true
+  },
+  nivel: {
+    type: Number,
+    min: 1,
+    max: 6
+  },
+  items: {
+    type: [String]
+  },
+  src: {
+    type: String,
+    trim: true
+  }
+});
+
+// Definición del esquema para un Blog
+const blogSchema = new Schema({
+  titulo: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
   },
   autor: {
     type: String,
-    required: true,
-
+    required: true
   },
   fechaPublicacion: {
     type: Date,
     default: Date.now
   },
+  metaDescripcion: {
+    type: String,
+    trim: true
+  },
+  contenido: {
+    type: [contenidoSchema],
+    required: true
+  },
   etiquetas: {
     type: [String],
     default: []
-  },
-  comentarios: [{
-    usuario: {
-      type: String,
-      required: true,
-
-    },
-    comentario: {
-      type: String,
-      required: true
-    },
-    fecha: {
-      type: Date,
-      default: Date.now
-    }
-  }],
-  vistas: {
-    type: Number,
-    default: 0
   },
   urlSlug: {
     type: String,
     required: true,
     unique: true,
-  },
-  metaDescripcion: {
-    type: String,
-    }
+    trim: true
+  }
 });
 
-// Crea el modelo basado en el esquema
+// Crear un modelo a partir del esquema
 const Blog = mongoose.model('Blog', blogSchema);
 
 module.exports = Blog;
