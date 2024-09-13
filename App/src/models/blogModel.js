@@ -26,6 +26,58 @@ const contenidoSchema = new Schema({
   }
 });
 
+
+
+const respuestaSchema = new Schema({
+  autor: {
+    type: String,
+    required: true
+  },
+  contenido: {
+    type: String,
+    required: true
+  },
+  likes: {
+    like:{ type: Number, default: 0 },
+    userId:{type: [String], // Array de userIds que han dado like
+      default: []
+    },
+  },
+  dislikes: {
+    dislike:{ type: Number, default: 0 },
+    userId:{type: [String], // Array de userIds que han dado like
+      default: []
+    }
+  },
+  // Aquí es donde se permite la anidación de respuestas dentro de respuestas
+  respuestas: [{ type: Schema.Types.ObjectId, ref: 'Respuesta' }]
+});
+// Definición del esquema para los comentarios
+const comentarioSchema = new Schema({
+  autor: {
+    type: String,
+    required: true
+  },
+  contenido: {
+    type: String,
+    required: true
+  },
+  respuestas: [respuestaSchema],
+  likes: {
+    like:{ type: Number, default: 0 },
+    userId:{type: [String], // Array de userIds que han dado like
+      default: []
+    },
+  },
+  dislikes: {
+    dislike:{ type: Number, default: 0 },
+    userId:{type: [String], // Array de userIds que han dado like
+      default: []
+    }
+  },
+});
+
+
 // Definición del esquema para un Blog
 const blogSchema = new Schema({
   titulo: {
@@ -59,7 +111,9 @@ const blogSchema = new Schema({
     required: true,
     unique: true,
     trim: true
-  }
+  },
+  vistas: Number,
+  comentarios: [comentarioSchema]
 });
 
 // Crear un modelo a partir del esquema
