@@ -1,5 +1,5 @@
 const { validationResult, body } = require("express-validator");
-const { handleCreateProveedor } = require("./dropshiperHandler");
+const { handleCreateProveedor } = require("./proveedorHandler");
 const { handleCreateCliente } = require("../handler/clienteHandler");
 const { handleCreateDropshiper } = require("./dropshiperHandler");
 const { handleCreateTransportador } = require("../handler/transportadoraHandler");

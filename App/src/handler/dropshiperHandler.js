@@ -1,7 +1,7 @@
 // const { validationResult, body } = require('express-validator');
-const { create } = require('../controllers/dropshiper/dropshiperController');
+const {  createDropshiper } = require('../controllers/dropshiper/dropshiperController');
 
-// const validateCreateProductor = [
+// const validateCreateDrpcreateDropshiper = [
 //   body('nit').notEmpty().withMessage('El campo NIT es obligatorio.'),
 //   body('nombre').notEmpty().withMessage('El campo nombre es obligatorio.'),
 //   body('direccion').notEmpty().withMessage('El campo dirección es obligatorio.'),
@@ -44,7 +44,7 @@ const handleCreateDropshiper = async (data) => {
 
   try {
     // Llamar a tu función para crear el perfil del productor
-    const result = await createProductor(
+    const result = await createDropshiper(
       nit,
       nombre,
       imagen,
@@ -69,4 +69,6 @@ const handleCreateDropshiper = async (data) => {
 };
 
 
-module.exports = {handleCreateDropshiper}
+module.exports = {
+  handleCreateDropshiper
+}
