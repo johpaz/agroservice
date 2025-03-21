@@ -32,6 +32,7 @@ const publicacionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  descripcion: String,
   fincas: [
     {
       type: mongoose.Schema.Types.ObjectId,

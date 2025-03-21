@@ -1,8 +1,5 @@
 const Product = require('../../models/productoMarketplace')
-const Comprador = require('../../models/compradorModel')
-const Productor = require('../../models/productoresModel')
-const Transportista = require('../../models/trasportadorModel')
-const Asegurador = require('../../models/aseguradorasModel')
+
 
 
 const createNewProduct = async ({producto}) => {

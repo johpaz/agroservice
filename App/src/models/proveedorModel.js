@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const aseguradoraSchema = new mongoose.Schema({
+const proveedorSchema = new mongoose.Schema({
   nit: {
     type: String,
     required: true,
@@ -26,7 +26,7 @@ const aseguradoraSchema = new mongoose.Schema({
   },
   redirectPath:{
     type:String,
-    default: "/dashboardClient"
+    default: "/dashboardProveedor"
   },
   role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true },
   usuarioMarketplace: {
@@ -37,10 +37,7 @@ const aseguradoraSchema = new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: "ProductoMarketplace",
   },
-  comprasEnMarketplace: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "PedidoMarketplace",
-  },
+  
   rating: {
     type: String,
     default: "5",
@@ -51,6 +48,6 @@ const aseguradoraSchema = new mongoose.Schema({
   },
 });
 
-const Aseguradora = mongoose.model("Aseguradora", aseguradoraSchema);
+const Proveedor = mongoose.model("Proveedor", proveedorSchema);
 
-module.exports = Aseguradora;
+module.exports = Proveedor;

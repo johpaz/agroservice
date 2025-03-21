@@ -1,7 +1,7 @@
-const { createComprador } = require('../controllers/comprador/compradorController');
+const { createCliente } = require('../controllers/cliente/clienteController');
 
 
-const handleCreateComprador = async (data) => {
+const handleCreateCliente = async (data) => {
 
   // Extraer datos del cuerpo de la solicitud
   const {
@@ -19,7 +19,7 @@ const handleCreateComprador = async (data) => {
 
   try {
     // Llamar a tu función para crear el perfil del Comprador
-    const result = await createComprador(
+    const result = await createCliente(
       nit,
       nombre,
       imagen,
@@ -44,5 +44,5 @@ const handleCreateComprador = async (data) => {
 
 
 module.exports = {
-  handleCreateComprador,
+  handleCreateCliente,
 };

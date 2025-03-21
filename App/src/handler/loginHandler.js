@@ -2,14 +2,13 @@ const {getUser} = require('../controllers/userLogin/getUser')
 const Role = require('../models/roleModel');
 
 const loginHandler = async (req, res) => {
-    const {email, telefono} = req.body //params o body ?
+    const {email, telefono} = req.body;
     
     const credential = email ? email : telefono
     
     
     try {
         const user = await getUser(credential)
-        console.log(user);
         if(user) {
             const userType = await Role.findOne({ _id: user.role }) 
             return res.status(200).json({session:user,success:true, userType: userType.name || null})

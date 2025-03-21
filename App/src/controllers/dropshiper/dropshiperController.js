@@ -1,8 +1,8 @@
 require('dotenv').config();
-const Productor = require('../../models/productoresModel');
+const Dropshipper = require('../../models/dropshipperModel');
 
 
-const createProductor = async (
+const createDropshiper = async (
   nit,
   nombre,
   imagen,
@@ -17,16 +17,16 @@ const createProductor = async (
 ) => {
   try {
     // Verificar si el usuario ya existe por su correo electrónico
-    const existingProductor = await Productor.findOne({ nit:nit });
+    const existingDropshiper = await Dropshipper.findOne({ nit:nit });
    
-    if (existingProductor) {
+    if (existingDropshiper) {
       return {
         success: false,
-        message: 'El Productor ya esta registrado.'
+        message: 'El Dropshiper ya esta registrado.'
       };
     }
 
-    const newProductor = new Productor({
+    const newDropshipper = new Dropshipper({
       nit: nit,
       nombre: nombre,
       imagen:imagen,
@@ -39,13 +39,13 @@ const createProductor = async (
       password: password,
       role: role
     });
-    console.log(newProductor);
-    await newProductor.save();
+    console.log(newDropshipper);
+    await newDropshipper.save();
     
     return {
       success: true,
       message: 'Productor creado exitosamente.',
-      user: newProductor
+      user: newDropshipper
     };
   } catch (error) {
     console.error('Error al crear el Productor:', error);
@@ -55,5 +55,5 @@ const createProductor = async (
 
 
 module.exports = {
-  createProductor,
+  createDropshiper,
 };

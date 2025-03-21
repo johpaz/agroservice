@@ -3,9 +3,8 @@ const {Router}= require('express');
 
 
 const roleRouter = require('./roleRoutes');
-const aseguradoraRouter = require('./aseguradoresRoutes')
-const compradorRouter = require('./compradorRoutes')
-const productorRouter = require('./productorRoutes')
+const proveedorRouter = require('./proveedorRoutes')
+const dropshiperRouter = require('./dropshiperRoutes')
 const transportadorRouter = require('./transportadoresRoute')
 const productoRouter = require('./productosRoutes')
 const fincaRouter = require('./fincasRoutes')
@@ -18,7 +17,7 @@ const userRouter = require('./userRoutes')
 const blogRouter = require('./blogRoutes')
 const eventoRouter = require('./eventosRoutes')
 const adminRouter = require('./adminRoutes')
-
+const clienteRouter = require('./clienteRoutes')
 
 router = Router();  
 
@@ -33,9 +32,9 @@ router.use('/publicacion', ofertasRoutes);
 router.use('/categoria', categoriaRouter);
 router.use('/transportador', transportadorRouter);
 router.use('/producto', productoRouter);
-router.use('/productor', productorRouter);
-router.use('/comprador', compradorRouter);
-router.use('/aseguradora', aseguradoraRouter);
+router.use('/productor', dropshiperRouter);
+router.use('/comprador', clienteRouter);
+router.use('/aseguradora', proveedorRouter);
 router.use('/role', roleRouter);
 router.use('/uploadUbicaciones', ubicacionesRouter) //para cargar y traer las ciudades y departamentos
 router.use('/ciudades', ciudadesRouter)

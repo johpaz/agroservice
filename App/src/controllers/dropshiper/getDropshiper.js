@@ -1,25 +1,24 @@
 const mongoose = require('mongoose');
-const Productor = require('../../models/productoresModel'); 
+const Dropshiper = require('../../models/dropshipperModel'); 
 
 
-const getAllProductor = async (req, res) => {
+const getAllDropshiper = async (req, res) => {
 
     try {
       // Obtiene todos los perfiles independientemente del tipo
-      const productor = await Productor.find();
+      const dropshiper = await Dropshiper.find();
   
-      return res.status(200).json(productor );
+      return res.status(200).json(dropshiper );
     } catch (error) {
-      console.error('Error al obtener los Productores:', error);
+      console.error('Error al obtener los dropshiperes:', error);
       return res.status(500).json({ success: false, message: 'Error al obtener los Productores.' });
     }
   };
-
-  const getProductorById = async (req, res) => {
+    const getDropshiperById = async (req, res) => {
     const { id } = req.params;
       
     try {
-    const productor = await Productor.findById(id);
+    const productor = await Dropshiper.findById(id);
     if(!productor){
       return res.status(404).json({ success: false, message: 'Productor no encontrado.' });
     }
@@ -33,33 +32,33 @@ const getAllProductor = async (req, res) => {
   }
 }
   
-  const updateProductor = async (req, res) => {
+  const updateDropshiper = async (req, res) => {
     const { id } = req.params;
     const updatedData = req.body;
     
     try {
       // Encuentra y actualiza el cliente por ID
-      const productor = await Productor.findByIdAndUpdate(
+      const dropshiper = await Dropshiper.findByIdAndUpdate(
         id,
         { $set: updatedData },
         { new: true, useFindAndModify: false }
       );
   
-      // Verifica si el Productor existe
-      if (!productor) {
-        return res.status(404).json({ success: false, message: 'Productor no encontrado.' });
+      // Verifica si el dropshiper existe
+      if (!dropshiper) {
+        return res.status(404).json({ success: false, message: 'dropshiper no encontrado.' });
       }
   
-      return res.status(200).json({ success: true, productor });
+      return res.status(200).json({ success: true, dropshiper });
     } catch (error) {
-      console.error('Error al actualizar el Productor:', error);
-      return res.status(500).json({ success: false, message: 'Error al actualizar el Productor.' });
+      console.error('Error al actualizar el dropshiper:', error);
+      return res.status(500).json({ success: false, message: 'Error al actualizar el dropshiper.' });
     }
   };
 
   
   module.exports ={
-    getAllProductor,
-    getProductorById,
-    updateProductor
+    getAllDropshiper,
+    getDropshiperById,
+    updateDropshiper
   }

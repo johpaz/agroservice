@@ -1,7 +1,7 @@
-const { createAseguradora } = require('../controllers/aseguradores/aseguradoresController');
+const {  createProveedor } = require('../controllers/proveedor/proveedorController');
 
 
-const handleCreateAsegurador = async (data) => {
+const handleCreateProveedor = async (data) => {
   // Extraer datos del cuerpo de la solicitud
   const {
     nit,
@@ -18,7 +18,7 @@ const handleCreateAsegurador = async (data) => {
 
   try {
     // Llamar a tu función para crear el perfil del Asegurador
-    const result = await createAseguradora(
+    const result = await createProveedor(
       nit,
       nombre,
       imagen,
@@ -42,5 +42,5 @@ const handleCreateAsegurador = async (data) => {
 
 
 module.exports = {
-  handleCreateAsegurador,
+  handleCreateProveedor,
 };

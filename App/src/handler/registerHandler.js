@@ -1,7 +1,7 @@
 const { validationResult, body } = require("express-validator");
-const { handleCreateProductor } = require("../handler/productorHandler");
-const { handleCreateComprador } = require("../handler/compradorHandler");
-const { handleCreateAsegurador } = require("../handler/aseguadorHandler");
+const { handleCreateProveedor } = require("./dropshiperHandler");
+const { handleCreateCliente } = require("../handler/clienteHandler");
+const { handleCreateDropshiper } = require("./dropshiperHandler");
 const { handleCreateTransportador } = require("../handler/transportadoraHandler");
 const getCoordinates = require('../handler/ubicacionHandler'); // Asegúrate de ajustar la ruta según tu estructura de proyecto
 
@@ -43,13 +43,13 @@ const handleRegister = async (req, res) => {
 
     
     if (data.role == "663908d920dc679dae2d35a6") {
-      user = await handleCreateComprador(data);
+      user = await handleCreateCliente(data);
     } else if (data.role == "6639090120dc679dae2d35ac") {
       user = await handleCreateTransportador(data);
     } else if (data.role == "663908cd20dc679dae2d35a3") {
-      user = await handleCreateProductor(data);
+      user = await handleCreateProveedor(data);
     } else if (data.role == "663908f620dc679dae2d35a9") {
-      user = await handleCreateAsegurador(data);
+      user = await handleCreateDropshiper(data);
     } else {
       return res.status(400).json({ error: "Rol inválido" });
     }

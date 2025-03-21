@@ -1,8 +1,8 @@
 require('dotenv').config();
-const Comprador = require('../../models/compradorModel');
+const Proveedor = require('../../models/proveedorModel');
 const Role = require('../../models/roleModel');
 
-const createComprador = async (
+const createProveedor = async (
   nit,
   nombre,
   imagen,
@@ -10,25 +10,25 @@ const createComprador = async (
   telefono,
   ciudad,
   departamento,
-  ubicacion,
   email,
+  password,
   role
   
 ) => {
   try {
     // Verificar si el usuario ya existe por su correo electrónico
-    const existingComprador = await Comprador.findOne({ nit: nit });
+    const existingProveedor = await Proveedor.findOne({ nit: nit });
 
-    if (existingComprador) {
+    if (existingProveedor) {
       return {
         success: false,
-        message: 'El Comprador ya esta registrado.'
+        message: 'La Aseguradora ya esta registrada.'
       };
     }
 
-    
+  
     // Crear un nuevo perfil con la contraseña hasheada y los nuevos campos
-    const newComprador = new Comprador({
+    const newProveedor = new Proveedor({
       nit: nit,
       nombre:nombre,
       imagen:imagen,
@@ -36,23 +36,24 @@ const createComprador = async (
       telefono:telefono,
       ciudad:ciudad,
       departamento:departamento,
-      ubicacion:ubicacion,
       email:email,
+      password:password,
       role:role
     });
 
-    await newComprador.save();
-    const userType = await Role.findOne({ _id: newComprador.role }) 
+    await newProveedor.save();
+    const userType = await Role.findOne({ _id: newProveedor.role }) 
     return {
-       session: newComprador,success:true,userType: userType.name 
-    };
+     session:newProveedor, success:true,userType: userType.name 
+    }
+    
   } catch (error) {
-    console.error('Error al crear el Comprador:', error);
-    return { success: false, message: 'Error al crear el Comprador.' };
+    console.error('Error al crear la aseguradora:', error);
+    return { success: false, message: 'Error al crear la aseguradora.' };
   }
 };
 
 
 module.exports = {
-  createComprador,
+  createProveedor,
 };

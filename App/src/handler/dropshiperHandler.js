@@ -1,5 +1,5 @@
 // const { validationResult, body } = require('express-validator');
-const { createProductor } = require('../controllers/productor/productorController');
+const { create } = require('../controllers/dropshiper/dropshiperController');
 
 // const validateCreateProductor = [
 //   body('nit').notEmpty().withMessage('El campo NIT es obligatorio.'),
@@ -19,7 +19,7 @@ const { createProductor } = require('../controllers/productor/productorControlle
 // ];
 
 
-const handleCreateProductor = async (data) => {
+const handleCreateDropshiper = async (data) => {
   // Manejar errores de validación utilizando el middleware handleValidationErrors
   // const errors = validationResult(req);
 
@@ -69,4 +69,4 @@ const handleCreateProductor = async (data) => {
 };
 
 
-module.exports = {handleCreateProductor}
+module.exports = {handleCreateDropshiper}

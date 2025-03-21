@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Productor = require("../../models/productoresModel");
-const Comprador = require("../../models/compradorModel");
-const Asegurador = require("../../models/aseguradorasModel");
+const Dropshiper = require("../../models/dropshipperModel");
+const Cliente = require("../../models/clienteModel");
+const Proveedor = require("../../models/proveedorModel");
 const Transportador = require("../../models/trasportadorModel");
 const Admin = require("../../models/adminModel");
 
@@ -11,20 +11,13 @@ const getUser = async (credential) => {
   console.log(credential);
   if (isEmail) {
     user = 
-           await Productor.findOne({ email: credential }) ||
-           await Comprador.findOne({ email: credential }) ||
-           await Asegurador.findOne({ email: credential }) ||
+           await Dropshiper.findOne({ email: credential }) ||
+           await Cliente.findOne({ email: credential }) ||
+           await Proveedor.findOne({ email: credential }) ||
            await Transportador.findOne({ email: credential })||
            await Admin.findOne({ email: credential });
            console.log(user);
-  } else {
-    user =  
-           await Productor.findOne({ telefono: credential }) ||
-           await Comprador.findOne({ telefono: credential }) ||
-           await Asegurador.findOne({ telefono: credential }) ||
-           await Transportador.findOne({ telefono: credential })||
-           await Admin.findOne({ telefono: credential });
-  }
+  } 
 
   return user;
 };

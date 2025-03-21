@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const compradorOferenteSchema = new mongoose.Schema({
+const clienteSchema = new mongoose.Schema({
   nit: {
     type: String,
     required: true,
@@ -32,7 +32,7 @@ const compradorOferenteSchema = new mongoose.Schema({
   },
   redirectPath: {
     type: String,
-    default: "/dashboardClient",
+    default: "/dashboardCliente",
   },
   email: {
     type: String,
@@ -43,10 +43,6 @@ const compradorOferenteSchema = new mongoose.Schema({
   usuarioMarketplace: {
     type: Boolean,
     default: true,
-  },
-  productosMarketplace: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "ProductoMarketplace",
   },
   comprasEnMarketplace: {
     type: [mongoose.Schema.Types.ObjectId],
@@ -62,11 +58,11 @@ const compradorOferenteSchema = new mongoose.Schema({
   },
 });
 
-compradorOferenteSchema.index({ ubicacion: "2dsphere" });
+clienteSchema.index({ ubicacion: "2dsphere" });
 
-const CompradorOferente = mongoose.model(
-  "CompradorOferente",
-  compradorOferenteSchema
+const Cliente = mongoose.model(
+  "Cliente",
+  clienteSchema
 );
 
-module.exports = CompradorOferente;
+module.exports = Cliente;
