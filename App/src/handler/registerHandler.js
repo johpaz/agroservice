@@ -47,9 +47,9 @@ const handleRegister = async (req, res) => {
     } else if (data.role == "6639090120dc679dae2d35ac") {
       user = await handleCreateTransportador(data);
     } else if (data.role == "663908cd20dc679dae2d35a3") {
-      user = await handleCreateProveedor(data);
-    } else if (data.role == "663908f620dc679dae2d35a9") {
       user = await handleCreateDropshiper(data);
+    } else if (data.role == "663908f620dc679dae2d35a9") {
+      user = await handleCreateProveedor(data);
     } else {
       return res.status(400).json({ error: "Rol inválido" });
     }

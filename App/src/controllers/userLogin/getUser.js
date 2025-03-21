@@ -5,19 +5,18 @@ const Proveedor = require("../../models/proveedorModel");
 const Transportador = require("../../models/trasportadorModel");
 const Admin = require("../../models/adminModel");
 
-const getUser = async (credential) => {
-  const isEmail = credential.includes("@");
+const getUser = async (email) => {
+  
   let user = null;
-  console.log(credential);
-  if (isEmail) {
+ 
+  if (email) {
     user = 
-           await Dropshiper.findOne({ email: credential }) ||
-           await Cliente.findOne({ email: credential }) ||
-           await Proveedor.findOne({ email: credential }) ||
-           await Transportador.findOne({ email: credential })||
-           await Admin.findOne({ email: credential });
-           console.log(user);
-  } 
+           await Dropshiper.findOne({ email: email }) ||
+           await Cliente.findOne({ email: email }) ||
+           await Proveedor.findOne({ email: email }) ||
+           await Transportador.findOne({ email: email })||
+           await Admin.findOne({ email: email });
+             } 
 
   return user;
 };
@@ -26,10 +25,10 @@ const getUserById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await Comprador.findById(id) ||
-                 await Asegurador.findById(id) ||
+    const user = await Cliente.findById(id) ||
+                 await Proveedor.findById(id) ||
                  await Transportador.findById(id) ||
-                 await Productor.findById(id);
+                 await Dropshiper.findById(id);
 
     if (!user) {
       throw new Error(`No existe ningún usuario con el ID: ${id}`);
