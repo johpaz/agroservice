@@ -37,13 +37,10 @@ const dropshipper = new mongoose.Schema({
     type: [mongoose.Schema.Types.ObjectId],
     ref: "PedidoMarketplace",
   },
-  comprasEnMarketplace: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "PedidoMarketplace",
-  },
+ 
   redirectPath:{
     type:String,
-    default: "/dashboardProductor"
+    default: "/dashboardDropshipper"
   },
   rating: {
     type: String,
